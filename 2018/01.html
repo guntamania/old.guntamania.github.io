@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>01</title>
-<!-- 2018-01-25 Thu 00:38 -->
+<!-- 2018-01-25 Thu 23:23 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <link rel="stylesheet"
@@ -227,6 +227,70 @@ $ git commit
 <p>
 出典は[<a href="https://qiita.com/nantekkotai/items/2ed17c3d774211d234a4">Qiita</a>]から。
 これで片方のファイルに上書きできるみたい。
+</p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">Rubyで</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2018-01-25 Thu]</span></span>
+</p>
+
+<p>
+今日Rubyを書いていて、ドットアクセスが続くような場合に
+nilのチェックをどうしようかと悩んでいた。
+</p>
+<pre class="example">
+user_info = get_infomation(id)
+address = userinfo.contact.mail_address
+</pre>
+<p>
+なんてときに、 <code>user_info</code> か <code>contact</code> がnilを返すと
+実行時エラーになってしまう。
+今まで、というか既存のコードはいちいち
+</p>
+<pre class="example">
+address = nil 
+if (user_info &amp;&amp; user_info.contact)
+  address = userinfo.contact.mail_address
+end
+</pre>
+<p>
+というnilチェックを行っていた。
+</p>
+
+<p>
+前例をまねするという観点では別にいいんだけど、やっぱり腑に落ちなかった。
+しばらく調査してみると、「ぼっち演算子」なる演算子をみつけた。
+</p>
+<pre class="example">
+address = userinfo&amp;.contact&amp;.mail_address
+</pre>
+<p>
+この <code>&amp;.</code> というのがぼっち演算子だ。
+こうやってアクセスすることによって、ドットアクセスしているインスタンス
+がnilでも、実行時エラーとならず、安全にnilを返してくれるようだ。
+</p>
+<pre class="example">
+address = userinfo&amp;.contact&amp;.mail_address || "empty"
+</pre>
+<p>
+などとすると、nilだった場合の初期値が与えられ、結構便利に運用できると
+思われる。
+</p>
+
+<p>
+rubyは宇宙船演算子もそうだけど、風変わりな演算子が見受けられて面白い。
+宇宙船演算子なんてのはあまり出番がなさそうだけど、
+ぼっち演算子は使い出がありそうだ。
+</p>
+
+<p>
+ちなみに、「&amp;」の部分がひざを抱えて座っている人に見え、
+ボールをいじっているように見えることから、「ぼっち演算子」らしい。
+正式名称ではないのだろうなあ。
 </p>
 </div>
 </div>
