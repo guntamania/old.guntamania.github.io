@@ -4,7 +4,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
 <head>
 <title>03</title>
-<!-- 2018-03-25 Sun 11:48 -->
+<!-- 2018-03-25 Sun 18:51 -->
 <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
 <meta  name="generator" content="Org-mode" />
 <link rel="stylesheet"
@@ -225,7 +225,7 @@ Mastering Bitcoinを読了し、拾い読みをしている。
 <h2 id="sec-4">日付まわり</h2>
 <div class="outline-text-2" id="text-4">
 <p>
-<span class="timestamp-wrapper"><span class="timestamp">[2018-03-25 Sun]</span></span>
+<span class="timestamp-wrapper"><span class="timestamp">[2018-03-24 Sat]</span></span>
 </p>
 
 <p>
@@ -260,6 +260,106 @@ Time.zone.now.ago(10.days).beginning_of_day
 <p>
 ここんとこの計算が毎回面倒だったんだよね。
 </p>
+</div>
+</div>
+
+<div id="outline-container-sec-5" class="outline-2">
+<h2 id="sec-5">bitcoinj</h2>
+<div class="outline-text-2" id="text-5">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">[2018-03-25 Sun]</span></span>
+</p>
+
+<p>
+JavaでBitcoin関連のライブラリないかな、と探していた。
+Androidでちょっと実験できたらいいな、と思ってみたり。
+</p>
+
+<p>
+たどり着いたのは以下のbitcoinjというライブラリ
+</p>
+
+<ul class="org-ul">
+<li>ドキュメント: <a href="https://bitcoinj.github.io/">https://bitcoinj.github.io/</a>
+</li>
+<li>github: <a href="https://github.com/bitcoinj/bitcoinj">https://github.com/bitcoinj/bitcoinj</a>
+</li>
+</ul>
+
+<p>
+ウォレットの参照実装がほしかったんだけど、
+JavaFXで実装されたものがあるようだ。
+</p>
+
+<p>
+<a href="https://github.com/bitcoinj/wallet-template">https://github.com/bitcoinj/wallet-template</a>
+</p>
+
+<p>
+こいつを <code>mvn</code> コマンドでビルドしてみる。
+が、エラーでビルドが通らない。
+</p>
+
+<p>
+pom.xmlのパッケージ名に誤りがあるようだ。
+64行目あたりで以下のように変更を加える。
+</p>
+<pre class="example">
+  &lt;dependency&gt;
+      &lt;groupId&gt;org.bitcoinj&lt;/groupId&gt;
+      &lt;artifactId&gt;bitcoinj-core&lt;/artifactId&gt;
++     &lt;version&gt;0.13-SNAPSHOT&lt;/version&gt;
+-      &lt;version&gt;0.13.6&lt;/version&gt;
+  &lt;/dependency&gt;
+</pre>
+<p>
+追従できてないだけかもしれないな。
+ちなみに0.14.xってのもあったが、こちらはエラーをはいてだめだった。
+</p>
+
+<p>
+順番は前後しちゃうんだけど、以下も。
+</p>
+<div class="org-src-container">
+
+<pre class="src src-xml">&lt;configuration&gt;
+    &lt;minimizeJar&gt;false&lt;/minimizeJar&gt;
+    &lt;filters&gt;
+	&lt;filter&gt;
+	    &lt;!-- exclude signatures, the bundling process breaks them for some reason --&gt;
+	    &lt;artifact&gt;*:*&lt;/artifact&gt;
+	    &lt;excludes&gt;
+		&lt;exclude&gt;META-INF/*.SF&lt;/exclude&gt;
+		&lt;exclude&gt;META-INF/*.DSA&lt;/exclude&gt;
+		&lt;exclude&gt;META-INF/*.RSA&lt;/exclude&gt;
+	    &lt;/excludes&gt;
+	&lt;/filter&gt;
+    &lt;/filters&gt;
+    &lt;shadedArtifactAttached&gt;true&lt;/shadedArtifactAttached&gt;
+    &lt;shadedClassifierName&gt;bundled&lt;/shadedClassifierName&gt;
+    &lt;transformers&gt;
+	&lt;transformer implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer"&gt;
++           &lt;mainClass&gt;wallettemplate.Main&lt;/mainClass&gt;
+-           &lt;mainClass&gt;${project.artifactId}.Main&lt;/mainClass&gt;
+	&lt;/transformer&gt;
+    &lt;/transformers&gt;
++   &lt;outputFile&gt;target/wallettemplate-shaded.jar&lt;/outputFile&gt;
+-   &lt;outputFile&gt;target/${project.artifactId}-shaded.jar&lt;/outputFile&gt;
+&lt;/configuration&gt;
+</pre>
+</div>
+<p>
+ここまで違うとコントリビュートしたほうがいいのかな..
+まあ、でも3年前が最終更新だから仕方ないね。
+</p>
+
+<p>
+ここまでして、以下でビルドして動かす。
+</p>
+<pre class="example">
+$ mvn package
+$ java -jar target/wallettemplate-shaded.jar
+</pre>
 </div>
 </div>
 </div>
