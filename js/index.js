@@ -19,5 +19,6 @@ var Index = {
 
 
 $(document).ready(function() {
+    console.log("ready");
     Index.onload();
 });
