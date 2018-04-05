@@ -2,7 +2,7 @@
 var Index = {
     onload: function() {
 	console.log("onload");
-	$('#about').click(function() {
+	$('#aboutme').click(function() {
 	    console.log("onclick");
 	    $.ajax('/about/about.html', {
 		timeout : 1000, // 1000 ms
