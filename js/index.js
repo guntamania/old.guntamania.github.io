@@ -14,6 +14,20 @@ var Index = {
 		    .append(out_html.filter('#content')[0].innerHTML);
 	    });
 	});
+
+	$('.diary-items').click(function(data) {
+	    var filename = $(this).data("diary-filename");
+	    $.ajax(filename, {
+		timeout : 1000, // 1000 ms
+		datatype:'html'
+	    }).then(function(data){
+		var out_html = $($.parseHTML(data));
+		$('#main-article')
+		    .empty()
+		    .append(out_html.filter('.outline-2')[0].innerHTML);
+	    });
+	    
+	});
     }
 };
 
