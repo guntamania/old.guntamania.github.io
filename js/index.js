@@ -24,7 +24,7 @@ var Index = {
 		var out_html = $($.parseHTML(data));
 		$('#main-article')
 		    .empty()
-		    .append(out_html.filter('.outline-2')[0].innerHTML);
+		    .append(out_html.filter('#content')[0].innerHTML);
 	    });
 	    
 	});
