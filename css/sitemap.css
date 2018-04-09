@@ -93,9 +93,9 @@ h1 {
 
 h2 {
     font-family: "Georgia",serif; 
-	position: relative;
-	padding: .25em 0 .5em .75em;
-
+    position: relative;
+    padding: .25em 0 .5em .75em;
+    margin: 5px 0;
 }
 h2::after {
 	position: absolute;
@@ -131,7 +131,7 @@ h4 {
 }
 
 .timestamp {
-    margin: 0;
+    margin: 0 4px;
     font-family: "Georgia",serif;
     color: #696969;
     font-size: small;
@@ -140,4 +140,8 @@ h4 {
 img {
     display: block;
     margin: 0 auto;
+}
+
+a {
+    color: SteelBlue;
 }
