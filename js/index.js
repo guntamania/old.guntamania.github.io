@@ -16,7 +16,7 @@ var Index = {
 	});
 	$('#menu-articles').click(function() {
 	    console.log("onclick");
-	    $.ajax('/articles/index.html', {
+	    $.ajax('/article/index.html', {
 		timeout : 1000, // 1000 ms
 		datatype:'html'
 	    }).then(function(data){
