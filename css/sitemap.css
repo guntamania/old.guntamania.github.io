@@ -42,26 +42,23 @@ nav ul li a{
     display: block;
 }
 
-li {
-    font-size: large;
-    font-weight: bold;
-}
-
-.org-ul ul li{ 	
-    display: inline;
-}
-
 ul li {
     list-style-type: none;
     font-family: serif;
     margin: 0.8em 0 0 0;
 }
 
+.org-ul ul li {
+    display: inline;
+    list-style-type: circle;
+    margin: 0.8em 0 0 0;
+    line-height: 1.5; /*文の行高*/
+    padding: 0.5em 0; /*前後の文との余白*/
+}
+
 a {
-    font-size: medium;
     font-weight: normal;
-    list-style-type: none;
-    font-family: serif;
+    color: SteelBlue;
 }
 
 
@@ -142,6 +139,4 @@ img {
     margin: 0 auto;
 }
 
-a {
-    color: SteelBlue;
-}
+
