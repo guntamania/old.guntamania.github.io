@@ -60,6 +60,5 @@ $('.article-items').ready(function() {
 		.empty()
 		.append(out_html.filter('#content')[0].innerHTML);
 	});
-	
     });
-}
+});
