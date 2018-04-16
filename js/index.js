@@ -24,7 +24,7 @@ var Index = {
 		$('#main-article')
 		    .empty()
 		    .append(out_html.filter('#content')[0].innerHTML);
-		onMenuClick();
+		Index.onMenuClick();
 	    });
 	});
 
