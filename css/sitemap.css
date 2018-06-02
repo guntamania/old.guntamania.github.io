@@ -142,6 +142,7 @@ img {
 
 .dusqus-wrapper {
     margin: auto;
+    margin-top: 20px;
     width: 63%;
     padding: 0;
     background-color: #f9f9f9; /* 全体の背景色 */
