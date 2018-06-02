@@ -3,6 +3,10 @@ margin: 0;
 padding: 0;
 }
 
+body {
+    background-color: #f9f9f9; /* 全体の背景色 */
+}
+
 @media screen and  (min-width: 240px) and (max-width: 999px) {
     /*　画面サイズ 500pxから999pxまで適用　*/
     article {width: 90%;}
@@ -17,7 +21,7 @@ padding: 0;
 article {
     margin: auto;
     padding: 0;
-    background-color: #f9f9f9; /* 全体の背景色 */
+    background-color: #ffffff; /* 全体の背景色 */
     color: #555;
     line-height: 1.7;
     font-family: YuGothic,游ゴシック,Meiryo,メイリオ,Hiragino Kaku Gothic Pro,ヒラギノ角ゴシック,sans-serif;
@@ -35,6 +39,10 @@ nav {
     float:
     height: 50px;
     border-bottom: 3px double #ccc;
+}
+
+header nav {
+    background-color: #eeeeee; /* 全体の背景色 */
 }
 
 nav ul {
