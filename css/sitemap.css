@@ -3,9 +3,19 @@ margin: 0;
 padding: 0;
 }
 
+@media screen and (max-width: 799px) {
+    /*　画面サイズ 500pxから999pxまで適用　*/
+    article {width: 90%;}
+    .disqus-wrapper{width: 90%;}
+}
+@media screen and (min-width:800px) {
+    /*　画面サイズ 1000px以上から適用　*/
+    article {width: 63%}
+    .disqus-wrapper{width: 63%;}
+}
+
 article {
     margin: auto;
-    width: 63%;
     padding: 0;
     background-color: #f9f9f9; /* 全体の背景色 */
     color: #555;
