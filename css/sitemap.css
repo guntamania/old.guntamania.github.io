@@ -3,12 +3,12 @@ margin: 0;
 padding: 0;
 }
 
-@media screen and (max-width: 799px) {
+@media screen and  (min-width: 240px) and (max-width: 999px) {
     /*　画面サイズ 500pxから999pxまで適用　*/
     article {width: 90%;}
     .disqus-wrapper{width: 90%;}
 }
-@media screen and (min-width:800px) {
+@media screen and (min-width:1000px) {
     /*　画面サイズ 1000px以上から適用　*/
     article {width: 63%}
     .disqus-wrapper{width: 63%;}
@@ -80,16 +80,30 @@ blockquote {
     font-family: "Georgia",serif;
     color: #696969;    
 }
-
-h1.title {
-    font-family: "Georgia",serif; 
-    padding-bottom: .6em;
-    text-align: center;
-    width: 60%;
-    height: 30px;
-    margin: auto;
-    padding: 20px;
+@media screen and  (min-width: 240px) and (max-width: 999px) {
+    h1.title {
+	font-family: "Georgia",serif;
+	font-size: 48px;
+	padding-bottom: .9em;
+	text-align: center;
+	width: 80%;
+	height: 52px;
+	margin: auto;
+	padding: 20px;
+    }
 }
+@media screen and  (min-width: 1000px) {
+    h1.title {
+	font-family: "Georgia",serif; 
+	padding-bottom: .6em;
+	text-align: center;
+	width: 60%;
+	height: 30px;
+	margin: auto;
+	padding: 20px;
+    }
+}
+
 
 h1 {
     font-family: "Georgia",serif; 
