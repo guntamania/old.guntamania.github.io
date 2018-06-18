@@ -54,24 +54,17 @@
       <H1 class="title"> Mdk-Memo </H1>
     </HEADER>
     <article id="main-article">
-      <div id="url" style="display:none;">https://medaka.github.io//article/majestouch-vs-niz-plum.html</div>
-      <h2>Majestouch vs Niz Plum</h2>
-<p>I&#8217;ve bought Niz plum and tried to compare Filco majestouch which I was using
-  for 4 yrs.</p>
-<iframe width="560" 
-        height="315"
-        src="https://www.youtube.com/embed/UDBwvkwnkbM"
-        frameborder="0"
-        allow="autoplay; encrypted-media" allowfullscreen>
-</iframe>
-<p>Niz plum is an electrostatic capacitive keyboard.  Let&#8217;s listen to the
-  typing sound on the video..  That sounds very smooth and quite
-  elegant.</p>
-<p>Filco Majestouch is a mechanical keyboard, which is so tough that
-  I was using it very long time and it is still be useful. This sounds a
-  little bit loudly. Some people like this typing noise.</p>
-<p>We can arrange Niz plum&#8217;s layout with Windows apps which can download
-  from <a href="https://www.nizkeyboard.com/download/">here</a>. My laptop which I use at home is Mac, so I cannot use it..</p>
+      <div id="url" style="display:none;">https://medaka.github.io//article/caputure-a-screenshot-org-mode.html</div>
+      <h2>Capturing a screenshot in org-mode</h2>
+<p>Org-mode in Emacs is one of best writing tool for me.</p>
+<pre class="src">
+(require &#39;org-attach-screenshot)
+(setq org-attach-screenshot-command-line &quot;screencapture -s %f&quot;)
+</pre>
+<pre class="src">
+-	  (insert (concat &quot;[[file:&quot; linkfilename &quot;]]&quot;))
++	  (insert (concat &quot;#+attr_html: :width 300px\n[[file:&quot; linkfilename &quot;][file:&quot; linkfilename &quot;]]&quot;))
+</pre>
     </article>
     
     
@@ -86,8 +79,8 @@
       *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
 
      var disqus_config = function () {
-	 this.page.url = "https://medaka.github.io//article/majestouch-vs-niz-plum.html";  // Replace PAGE_URL with your page's canonical URL variable
- 	 this.page.identifier = "https://medaka.github.io//article/majestouch-vs-niz-plum.html"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+	 this.page.url = "https://medaka.github.io//article/caputure-a-screenshot-org-mode.html";  // Replace PAGE_URL with your page's canonical URL variable
+ 	 this.page.identifier = "https://medaka.github.io//article/caputure-a-screenshot-org-mode.html"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
      };
 
      (function() { // DON'T EDIT BELOW THIS LINE

@@ -23,7 +23,7 @@
      gtag('js', new Date());
 
      gtag('config', 'UA-107284492-2');
-    </script>
+    </script> 
     
   </head>
   
@@ -31,7 +31,7 @@
     <HEADER>
       <nav>
 	<ul>
-	  <li><a href="/">DIARY</a></li>
+	  <li><a href="/diary.html">DIARY</a></li>
 	  <li id="menu-aboutme"><a href="/about">ABOUT</a></li>
 	  
 	  <li id="menu-articles"><a href="/article">ARTICLES</a></li>
@@ -47,6 +47,83 @@
   これでブログっぽくなるぜ。
   とりあえず、Articleのほうにだけ追加しておく。
   こっちはメモだし、いらないよねえ。。</p>
+<h2>Android Test</h2>
+<p>[2018-06-17 Sun]
+  わけあって、Androidのテストについて調べていた。
+  自動テストってやつだ。もうこの「自動テスト」とか、
+  「自動化」って古い響きがするんだけども。</p>
+<p>Androidでのテストは以下に大別できる。</p>
+<ul>
+  <li>Local Unit Test</li>
+  <li>Instrumented Test</li>
+</ul>
+<h2>Local Unit Test</h2>
+<p>いわゆる単体テストってやつなのかな。
+  昔ながらのテストでイメージするのはこっちかな。
+  メソッドごとに単体テストを行い、
+  期待どおりの出力が得られるかどうかテストをする。</p>
+<p>例えば足し算をテストするようなやつだ。</p>
+<p>ただ、Androidだと、フレームワーク依存部分が多少なりとも出てくるから、
+  <a href="http://robolectric.org/">Robolectric</a> なんかを使う必要があるかもしれない。</p>
+<p>あとはモックを使う箇所が出てくる。
+  クラスのインスタンス化を行わずに振る舞いだけを
+  定義してやることを「モック」というらしいんだけど、
+  これを使うことによって、他のクラスに依存することがない
+  テストを書くことができるっぽい。</p>
+<p>例えば、 <code>RestService</code> なんていう自作クラスがあったときに</p>
+<pre class="src">
+mRestService = new RestService(context);
+</pre>
+<p>ってやっちゃうと、 <code>RestService</code> のテストまですることになってしまう。
+  これをモックを用いることで、回避しようってわけ。</p>
+<p>単体テストは、開発以外の人から見るとあまり意味のないものと
+  捉えられるかもしれない。
+  ただ、大人数や不特定多数で開発する場合、
+  I/Fまわり（publicメソッドふくむ）
+  の試験くらいは用意していたほうがいいのかな、と思うことがある。</p>
+<p>まあでもこれもステークホルダを説得できるかどうかにかかっている。
+  僕はまだ職場では導入できていない‥</p>
+<h2>Instrumented Test</h2>
+<p>実機を使ったテスト。
+  単体テストではできなかった結合試験を行うことができる。</p>
+<p>用いるフレームワークは以下の2つに大別できる。</p>
+<ul>
+  <li>Espresso</li>
+  <li>UiAutomator</li>
+</ul>
+<p>両方ともUIテストができる。</p>
+<p>UIテストってのは、ユーザ入力を何らかの方法で擬似して、
+  アプリを実際に動かすテストだ。</p>
+<p>それだけに非常に説得力のあるテストなんだけど、
+  コードを直接試験するような特性はないので、
+  まあ、ざっくりとした試験になりがちってこと。
+  カバレッジ上げるのも大変だしね。</p>
+<p>Espressoは細かい入力を擬似することができるし、
+  使いやすいんだけど、弱点として、他のアプリの操作が
+  できないことが挙げられる。
+  なので、インテントを投げて他のアプリでシェア、
+  なんて試験はできないので、そういった場合は
+  UiAutomatorの出番になる。</p>
+<p>ただ、Espressoの弱点ってほぼそれだけのようなので、
+  あまりUiAutomatorの出番はないかもしれない。</p>
+<h2>最近</h2>
+<p>で、気になったのは、記事が出ないことでないこと..</p>
+<p>Googleで引っ掛けてみても全然最近の記事がヒットしない。
+  Google I/Oでの講演が2017なんで、
+  それ以降の記事が出てきてもいいと思うんだけど‥</p>
+<p>アーキテクチャの話はたくさんでてくるし、
+  MVPやMVVMって、テストしやすいアーキテクチャだって
+  話だったとも思うんだけど。</p>
+<p>なぜそれとセットでテストの話が出てこないんだ‥？</p>
+<h2>参考</h2>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v%3DpK7W5npkhho&amp;start%3D409">Google I/O &#8216;17 | Youtube</a></li>
+  <li><a href="https://developer.android.com/training/testing/">Testing apps on Android | Android Develoers</a></li>
+</ul>
+<h2>メモ</h2>
+<p>cssのフレームワークはめんどくさいので、
+  フレームワーク使ってない参考サイト</p>
+<p>zeroequalsfalse.press</p>
     </article>
     
     
