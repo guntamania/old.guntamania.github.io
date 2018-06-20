@@ -31,10 +31,10 @@
     <HEADER>
       <nav>
 	<ul>
-	  <li><a href="/diary.html">DIARY</a></li>
-	  <li id="menu-aboutme"><a href="/about">ABOUT</a></li>
+	  <li class="menu"><a href="/diary.html">DIARY</a></li>
+	  <li class="menu" id="menu-aboutme"><a href="/about">ABOUT</a></li>
 	  
-	  <li id="menu-articles"><a href="/article">ARTICLES</a></li>
+	  <li class="menu" id="menu-articles"><a href="/article">ARTICLES</a></li>
 	</ul>
       </nav>
       <H1 class="title"> Mdk-Memo </H1>
@@ -48,8 +48,8 @@
   とりあえず、Articleのほうにだけ追加しておく。
   こっちはメモだし、いらないよねえ。。</p>
 <h2>Android Test</h2>
-<p>[2018-06-17 Sun]
-  わけあって、Androidのテストについて調べていた。
+<span class="timestamp">[2018-06-17 Sun]</span>
+<p>わけあって、Androidのテストについて調べていた。
   自動テストってやつだ。もうこの「自動テスト」とか、
   「自動化」って古い響きがするんだけども。</p>
 <p>Androidでのテストは以下に大別できる。</p>
@@ -57,7 +57,7 @@
   <li>Local Unit Test</li>
   <li>Instrumented Test</li>
 </ul>
-<h2>Local Unit Test</h2>
+<h3>Local Unit Test</h3>
 <p>いわゆる単体テストってやつなのかな。
   昔ながらのテストでイメージするのはこっちかな。
   メソッドごとに単体テストを行い、
@@ -83,7 +83,7 @@ mRestService = new RestService(context);
   の試験くらいは用意していたほうがいいのかな、と思うことがある。</p>
 <p>まあでもこれもステークホルダを説得できるかどうかにかかっている。
   僕はまだ職場では導入できていない‥</p>
-<h2>Instrumented Test</h2>
+<h3>Instrumented Test</h3>
 <p>実機を使ったテスト。
   単体テストではできなかった結合試験を行うことができる。</p>
 <p>用いるフレームワークは以下の2つに大別できる。</p>
@@ -106,7 +106,7 @@ mRestService = new RestService(context);
   UiAutomatorの出番になる。</p>
 <p>ただ、Espressoの弱点ってほぼそれだけのようなので、
   あまりUiAutomatorの出番はないかもしれない。</p>
-<h2>最近</h2>
+<h3>最近</h3>
 <p>で、気になったのは、記事が出ないことでないこと..</p>
 <p>Googleで引っ掛けてみても全然最近の記事がヒットしない。
   Google I/Oでの講演が2017なんで、
@@ -115,7 +115,7 @@ mRestService = new RestService(context);
   MVPやMVVMって、テストしやすいアーキテクチャだって
   話だったとも思うんだけど。</p>
 <p>なぜそれとセットでテストの話が出てこないんだ‥？</p>
-<h2>参考</h2>
+<h3>参考</h3>
 <ul>
   <li><a href="https://www.youtube.com/watch?v%3DpK7W5npkhho&amp;start%3D409">Google I/O &#8216;17 | Youtube</a></li>
   <li><a href="https://developer.android.com/training/testing/">Testing apps on Android | Android Develoers</a></li>

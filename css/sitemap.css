@@ -61,10 +61,17 @@ nav ul li a{
 }
 
 ul li {
+    list-style-type: circle;
+    margin: 2px 0px 2px 48px;
+}
+
+
+ul li.menu {
     list-style-type: none;
     font-family: serif;
     margin: 0.8em 0 0 0;
 }
+
 
 .org-ul ul li {
     display: inline;
@@ -79,9 +86,13 @@ a {
     color: SteelBlue;
 }
 
+p {
+    margin: 0.8em 0;
+}
 
-Pre {
-    background-color: #ffffff;
+pre.src {
+    margin: 10px 2em;
+    background-color: #dddddd;
 }
 
 blockquote {
@@ -124,7 +135,7 @@ h2 {
     font-family: "Georgia",serif; 
     position: relative;
     padding: .25em 0 .5em .75em;
-    margin: 5px 0;
+    margin: 20px 0;
 }
 h2::after {
 	position: absolute;
