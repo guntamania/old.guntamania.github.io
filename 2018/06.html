@@ -83,47 +83,89 @@ mRestService = new RestService(context);
   の試験くらいは用意していたほうがいいのかな、と思うことがある。</p>
 <p>まあでもこれもステークホルダを説得できるかどうかにかかっている。
   僕はまだ職場では導入できていない‥</p>
-<h3>Instrumented Test</h3>
+<h3>instrumented test</h3>
 <p>実機を使ったテスト。
   単体テストではできなかった結合試験を行うことができる。</p>
 <p>用いるフレームワークは以下の2つに大別できる。</p>
 <ul>
-  <li>Espresso</li>
-  <li>UiAutomator</li>
+  <li>espresso</li>
+  <li>uiautomator</li>
 </ul>
-<p>両方ともUIテストができる。</p>
-<p>UIテストってのは、ユーザ入力を何らかの方法で擬似して、
+<p>両方ともuiテストができる。</p>
+<p>uiテストってのは、ユーザ入力を何らかの方法で擬似して、
   アプリを実際に動かすテストだ。</p>
 <p>それだけに非常に説得力のあるテストなんだけど、
   コードを直接試験するような特性はないので、
   まあ、ざっくりとした試験になりがちってこと。
   カバレッジ上げるのも大変だしね。</p>
-<p>Espressoは細かい入力を擬似することができるし、
+<p>espressoは細かい入力を擬似することができるし、
   使いやすいんだけど、弱点として、他のアプリの操作が
   できないことが挙げられる。
   なので、インテントを投げて他のアプリでシェア、
   なんて試験はできないので、そういった場合は
-  UiAutomatorの出番になる。</p>
-<p>ただ、Espressoの弱点ってほぼそれだけのようなので、
-  あまりUiAutomatorの出番はないかもしれない。</p>
+  uiautomatorの出番になる。</p>
+<p>ただ、espressoの弱点ってほぼそれだけのようなので、
+  あまりuiautomatorの出番はないかもしれない。</p>
 <h3>最近</h3>
 <p>で、気になったのは、記事が出ないことでないこと..</p>
-<p>Googleで引っ掛けてみても全然最近の記事がヒットしない。
-  Google I/Oでの講演が2017なんで、
+<p>googleで引っ掛けてみても全然最近の記事がヒットしない。
+  google i/oでの講演が2017なんで、
   それ以降の記事が出てきてもいいと思うんだけど‥</p>
 <p>アーキテクチャの話はたくさんでてくるし、
-  MVPやMVVMって、テストしやすいアーキテクチャだって
+  mvpやmvvmって、テストしやすいアーキテクチャだって
   話だったとも思うんだけど。</p>
 <p>なぜそれとセットでテストの話が出てこないんだ‥？</p>
 <h3>参考</h3>
 <ul>
-  <li><a href="https://www.youtube.com/watch?v%3DpK7W5npkhho&amp;start%3D409">Google I/O &#8216;17 | Youtube</a></li>
-  <li><a href="https://developer.android.com/training/testing/">Testing apps on Android | Android Develoers</a></li>
+  <li><a href="https://www.youtube.com/watch?v%3dpk7w5npkhho&amp;start%3d409">google i/o &#8216;17 | youtube</a></li>
+  <li><a href="https://developer.android.com/training/testing/">testing apps on android | android develoers</a></li>
 </ul>
 <h2>メモ</h2>
+<span class="timestamp">[2018-06-18 mon]</span>
 <p>cssのフレームワークはめんどくさいので、
   フレームワーク使ってない参考サイト</p>
-<p>zeroequalsfalse.press</p>
+<p>http://zeroequalsfalse.press</p>
+<p>それだけ。。</p>
+<h2>mgo</h2>
+<span class="timestamp">[2018-06-20 wed]</span>
+<p>metal gear online 2 のサーバが有志によって復活しているようだ。</p>
+<ul>
+  <li><a href="https://www65.atwiki.jp/mgo2rplayer/pages/23.html">MGOR2とは｜MGOR2@wiki</a></li>
+  <li><a href="https://savemgo.com/">SaveMGO</a></li>
+</ul>
+<p>プレイするにはPS3のリストア機能を使うため、
+  内蔵ハードディスクをすべてリセットする必要があるんだけど、
+  もうあまりプレイしなくなったゲームのセーブデータしか入ってなかったんで、
+  思い切ってやってみた。</p>
+<p>プレイしてみると、本番サーバがよく再現されていて、
+  プレイヤビリティは全く遜色がない。</p>
+<p>ただ、ここまでしてプレイするプレイヤーってのは、
+  相当やりこんだプレイヤーであることが予想される。</p>
+<p>自分の腕が相当鈍っているというのもあるだろうけど、
+  なかなか太刀打ちできなかったのだった。</p>
+<h2>Macbooc以外のラップトップ</h2>
+<span class="timestamp">[2018-06-21 Thu]</span>
+<p>DELLという選択肢ね。</p>
+<p><a href="https://hachibeechan.hateblo.jp/entry/linux-keyboard-shortcut-is-awful">脱MacBookしようとしてnew XPS 13 2018年モデルにLinuxをいれてみたけどちょっと後悔してるよ</a></p>
+<p>（ややバズったせいか、もとの文が消えている気がする。）</p>
+<p>元記事では、DellのXPSをMacbookProの後釜として選んでいるようだ。</p>
+<p>前はおなじようなことかんがえていた。
+  別にMacを特別好んでいるわけではないので、
+  Linux機としてThinkpadを手に入れようと思ったのだ。</p>
+<p>自分としては</p>
+<ul>
+  <li>軽量で、</li>
+  <li>ある程度開発にも耐えて</li>
+  <li>US配列キーボードが搭載できる</li>
+</ul>
+<p>というのがPCの条件だった。</p>
+<p>最後の条件が結構厳しくて、Thinkpad
+  ぐらいしか選択肢に入らなかったんだけど、
+  DellもUS配列に載せ替えができるのね。</p>
+<p>結局、いろいろ検討したんだけど、いろいろ盛ったりすると結局Macbook Pro
+  買うのとあまり変わらんな、と思ってMacbook Proにしたのでした。</p>
+<p>元記事見ると、やはり、ノートPCにLinux入れて運用するのは、
+  結構気合のいる作業だってことがわかる。</p>
     </article>
     
     
