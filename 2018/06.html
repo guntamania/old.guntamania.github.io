@@ -166,6 +166,161 @@ mRestService = new RestService(context);
   買うのとあまり変わらんな、と思ってMacbook Proにしたのでした。</p>
 <p>元記事見ると、やはり、ノートPCにLinux入れて運用するのは、
   結構気合のいる作業だってことがわかる。</p>
+<h2>Java Script について試行錯誤</h2>
+<span class="timestamp">[2018-06-29 Fri]</span>
+<p>JavaScriptを書くことがあるんだけど、クラスの実装やら、
+  インスタンスまわりの設計についていろいろ悩んでいる。
+  一応決着付きそうな感じなので、メモ。</p>
+<h3>素朴な実装</h3>
+<p>何も考えずにjsを書いていくとこうなっていく..</p>
+<pre class="src">
+var value;
+function method1() {
+  value++;
+  console.log(&quot;value is &quot; + value);
+}
+
+function method2() {
+}
+
+ :
+</pre>
+<p>これでも悪くはない。でも、割とすぐに破綻してしまう。
+  やはり変数のスコープや値やメソッドの保持の仕方を考えないと、
+  設計にすぐ行き詰まってしまうのだ。</p>
+<h3>名前空間</h3>
+<p>JSはHTML側で勝手に読んでくるので、自分が定義する変数やメソッドが
+  グローバルにあるかどうかが重要になってくる。例えば</p>
+<pre class="src">
+function add(a, b){
+  return(a + b);
+}
+</pre>
+<p>なんてしたときに既存の <code>add</code> を書き換えてしまっているかもしれない。
+  これをグローバル汚染という。</p>
+<p>グローバル汚染を防ぐのであれば、単純に名前空間を導入すればいい。</p>
+<pre class="src">
+var NameSpace = NameSpace || {};
+
+NameSpace = {
+  method1: function(a, b) {
+    return (a+b);
+  },
+  method2: function() {
+    console.log(&quot;result is&quot; + NameSpace.method1(1, 2));
+  }
+};
+// 呼ぶとき
+NameSpace.method2();
+</pre>
+<p>上記では <code>method1</code> も <code>method2</code> も毎回名前空間である <code>NameSpace</code>
+  をつけなければ呼ぶことができない。</p>
+<p>これでどれだけベタな命名をしても他のメソッド名とかぶる心配がなくなり、
+  名前空間の管理だけしておけば良いことになる。</p>
+<p>ただし、このパターンはオブジェクト指向ではない。
+  インスタンスを持っていないためだ。</p>
+<h3>クラス</h3>
+<p>そこで、クラスを導入する。最新の仕様だと <code>class</code>
+  が導入されているが、IEでは動かないため、今回は考えない。</p>
+<p>ここではクラス <code>MyClass</code> を導入することを考える。</p>
+<pre class="src">
+var MyClass = function(name) {
+ this.name = name;
+};
+
+MyClass.prototype.method1 = function() {
+  return this.name;
+};
+
+MyClass.prototype.method2 = function() {
+  console.log(&quot;hello,&quot; + this.method1);
+};
+
+new MyClass(&quot;john&quot;).method2();
+</pre>
+<p>この実装で、クラスの振る舞いをもたせることができる。
+  インスタンスメソッドや、フィールドを持つことができるため、
+  オブジェクト指向プログラミングが可能になる。</p>
+<p>また、メソッドの実装部は下記のようにしてもよい。</p>
+<pre class="src">
+MyClass.prototype = {
+  method1: function() {
+    return this.name;
+  },
+  method2: function() {
+    console.log(&quot;hello,&quot; + this.method1);
+  }
+}
+</pre>
+<p>ただし、このパターンだと、すべてのメソッドがパブリックになってしまう。
+  このパターンの場合のように、プライベートメソッドや変数が
+  宣言できない場合、冒頭にアンダースコアをつけ、</p>
+<pre class="src">
+MyClass.prototype._privateMethod = function() {..};
+</pre>
+<p>のようにすることもあるが、外部から呼び出すことは可能なので、
+  あまり効果があるとはいえない。</p>
+<h3>モジュールパターン導入</h3>
+<p>最近はモジュールパターンを導入しつつ、
+  インスタンス生成を簡素化するため、
+  以下のようなパターンを用いている。</p>
+<pre class="src">
+MyClass = (function() {
+  // 1
+  var name;
+  var self;
+  // 2
+  function Klass() {
+	// 3
+	self = this;
+  };
+  Klass.prototype = {
+	// 4
+	publicMethod1: function() {
+	},
+	publicMethod2: function() {
+	}
+  };
+  // 5
+  function privateMethod() {
+	self.publicMethod2();
+  };
+  // 6
+  return Klass;
+})();
+</pre>
+<p>インスタンスを作るときは以下のようにすれば良い</p>
+<pre class="src">
+var instance = new MyClass();
+</pre>
+<p>一つの名前空間に対して唯一のクラスを実装するときに有効なパターンだ。</p>
+<p>まず、1では、プライベートな変数を宣言している。
+  この名前空間の中では <code>value</code> の形で利用可能だ。
+  名前空間や <code>this</code> をいちいちつける必要もない。</p>
+<p>2 でコンストラクタを実装している。</p>
+<p>3 で <code>self</code> を宣言している。これは、 <code>this</code> が指す内容が
+  各スコープごとで変わってしまうためだ。
+  例えば、 5 でのプライベートメソッドや、
+  コールバック登録時の匿名メソッド内などで <code>this</code> の内容が変わってしまう。
+  これをコンストラクタ内で <code>self</code> に固定してしまうことにより、
+  いつでもこのインスタンスを指すハンドラを呼び出すことができる。</p>
+<p>4 では、パブリックメソッドを宣言している。外部からは
+  <code>instance.publicMethod1();</code> のように利用可能だ。
+  ただし、内部からは <code>this</code> を使って呼び出す必要がある。</p>
+<p>5 はプライベートメソッドだ。
+  内部からは利用可能であり、内部変数も呼び出し可能である。</p>
+<p>6 でこのクラスを返している。
+  このように返すと、
+  名前空間を意識せずにインスタンスを生成することができる。</p>
+<h3>おわりに</h3>
+<p>JavaScriptは生粋なオブジェクト指向言語ではない。
+  オブジェクト指向プログラミングをする場合、
+  上記のように自分で、構造から定義してやる必要がある。</p>
+<p>最初はとっつきにくかったが、やってみると、
+  最近は楽しみすら感じるようになってきた。</p>
+<p>規模や目的によって、どこまでオブジェクト指向するのか
+  あるいは異なるパラダイムを導入するのか、
+  決めていく言語なんだと感じている。</p>
     </article>
     
     

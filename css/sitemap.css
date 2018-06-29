@@ -135,7 +135,7 @@ h2 {
     font-family: "Georgia",serif; 
     position: relative;
     padding: .25em 0 .5em .75em;
-    margin: 20px 0;
+    margin: 48px 0 0 0;
 }
 h2::after {
 	position: absolute;
