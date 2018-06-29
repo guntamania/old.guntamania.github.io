@@ -67,14 +67,14 @@
 <p>So I wrote  change below:</p>
 <p>init.el is like this:</p>
 <pre class="src">
-(require &#39;org-attach-screenshot)
+(require 'org-attach-screenshot)
 (setq org-attach-screenshot-command-line &quot;screencapture -s %f&quot;)
 </pre>
 <p>I want to let the big image thumbnailed and linking to originai image.
   I change original .el file like this.</p>
 <pre class="src">
--	  (insert (concat &quot;[[file:&quot; linkfilename &quot;]]&quot;))
-+	  (insert (concat &quot;#+attr_html: :width 300px\n[[file:&quot; linkfilename &quot;][file:&quot; linkfilename &quot;]]&quot;))
+-          (insert (concat &quot;[[file:&quot; linkfilename &quot;]]&quot;))
++          (insert (concat &quot;#+attr_html: :width 300px\n[[file:&quot; linkfilename &quot;][file:&quot; linkfilename &quot;]]&quot;))
 </pre>
     </article>
     

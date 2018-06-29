@@ -1,0 +1,337 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+  <?xml version="1.0" encoding="utf-8"?>
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+  <head>
+    <title>Mdk-Memo</title>
+    <meta  http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta  name="generator" content="ruby template engine" />
+    <link rel="stylesheet"
+          href="/css/sitemap.css"
+          type="text/css"/>
+    <script type="text/javascript"
+	    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" 
+            src="/js/index.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107284492-2"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-107284492-2');
+    </script> 
+    
+  </head>
+  
+  <body>
+    <HEADER>
+      <nav>
+	<ul>
+	  <li class="menu"><a href="/diary">DIARY</a></li>
+	  <li class="menu" id="menu-aboutme"><a href="/about">ABOUT</a></li>
+	  
+	  <li class="menu" id="menu-articles"><a href="/article">ARTICLES</a></li>
+	</ul>
+      </nav>
+      <H1 class="title"> Mdk-Memo </H1>
+    </HEADER>
+    <article id="main-article">
+      <div id="url" style="display:none;">https://medaka.github.io//diary/2018/06.html</div>
+      <h2>Disqusを導入</h2>
+<span class="timestamp">[2018-06-02 Sat]</span>
+<p>Disqusを導入した。
+  これでブログっぽくなるぜ。
+  とりあえず、Articleのほうにだけ追加しておく。
+  こっちはメモだし、いらないよねえ。。</p>
+<h2>Android Test</h2>
+<span class="timestamp">[2018-06-17 Sun]</span>
+<p>わけあって、Androidのテストについて調べていた。
+  自動テストってやつだ。もうこの「自動テスト」とか、
+  「自動化」って古い響きがするんだけども。</p>
+<p>Androidでのテストは以下に大別できる。</p>
+<ul>
+  <li>Local Unit Test</li>
+  <li>Instrumented Test</li>
+</ul>
+<h3>Local Unit Test</h3>
+<p>いわゆる単体テストってやつなのかな。
+  昔ながらのテストでイメージするのはこっちかな。
+  メソッドごとに単体テストを行い、
+  期待どおりの出力が得られるかどうかテストをする。</p>
+<p>例えば足し算をテストするようなやつだ。</p>
+<p>ただ、Androidだと、フレームワーク依存部分が多少なりとも出てくるから、
+  <a href="http://robolectric.org/">Robolectric</a> なんかを使う必要があるかもしれない。</p>
+<p>あとはモックを使う箇所が出てくる。
+  クラスのインスタンス化を行わずに振る舞いだけを
+  定義してやることを「モック」というらしいんだけど、
+  これを使うことによって、他のクラスに依存することがない
+  テストを書くことができるっぽい。</p>
+<p>例えば、 <code>RestService</code> なんていう自作クラスがあったときに</p>
+<pre class="src">
+mRestService = new RestService(context);
+</pre>
+<p>ってやっちゃうと、 <code>RestService</code> のテストまですることになってしまう。
+  これをモックを用いることで、回避しようってわけ。</p>
+<p>単体テストは、開発以外の人から見るとあまり意味のないものと
+  捉えられるかもしれない。
+  ただ、大人数や不特定多数で開発する場合、
+  I/Fまわり（publicメソッドふくむ）
+  の試験くらいは用意していたほうがいいのかな、と思うことがある。</p>
+<p>まあでもこれもステークホルダを説得できるかどうかにかかっている。
+  僕はまだ職場では導入できていない‥</p>
+<h3>instrumented test</h3>
+<p>実機を使ったテスト。
+  単体テストではできなかった結合試験を行うことができる。</p>
+<p>用いるフレームワークは以下の2つに大別できる。</p>
+<ul>
+  <li>espresso</li>
+  <li>uiautomator</li>
+</ul>
+<p>両方ともuiテストができる。</p>
+<p>uiテストってのは、ユーザ入力を何らかの方法で擬似して、
+  アプリを実際に動かすテストだ。</p>
+<p>それだけに非常に説得力のあるテストなんだけど、
+  コードを直接試験するような特性はないので、
+  まあ、ざっくりとした試験になりがちってこと。
+  カバレッジ上げるのも大変だしね。</p>
+<p>espressoは細かい入力を擬似することができるし、
+  使いやすいんだけど、弱点として、他のアプリの操作が
+  できないことが挙げられる。
+  なので、インテントを投げて他のアプリでシェア、
+  なんて試験はできないので、そういった場合は
+  uiautomatorの出番になる。</p>
+<p>ただ、espressoの弱点ってほぼそれだけのようなので、
+  あまりuiautomatorの出番はないかもしれない。</p>
+<h3>最近</h3>
+<p>で、気になったのは、記事が出ないことでないこと..</p>
+<p>googleで引っ掛けてみても全然最近の記事がヒットしない。
+  google i/oでの講演が2017なんで、
+  それ以降の記事が出てきてもいいと思うんだけど‥</p>
+<p>アーキテクチャの話はたくさんでてくるし、
+  mvpやmvvmって、テストしやすいアーキテクチャだって
+  話だったとも思うんだけど。</p>
+<p>なぜそれとセットでテストの話が出てこないんだ‥？</p>
+<h3>参考</h3>
+<ul>
+  <li><a href="https://www.youtube.com/watch?v%3dpk7w5npkhho&amp;start%3d409">google i/o &#8216;17 | youtube</a></li>
+  <li><a href="https://developer.android.com/training/testing/">testing apps on android | android develoers</a></li>
+</ul>
+<h2>メモ</h2>
+<span class="timestamp">[2018-06-18 mon]</span>
+<p>cssのフレームワークはめんどくさいので、
+  フレームワーク使ってない参考サイト</p>
+<p>http://zeroequalsfalse.press</p>
+<p>それだけ。。</p>
+<h2>mgo</h2>
+<span class="timestamp">[2018-06-20 wed]</span>
+<p>metal gear online 2 のサーバが有志によって復活しているようだ。</p>
+<ul>
+  <li><a href="https://www65.atwiki.jp/mgo2rplayer/pages/23.html">MGOR2とは｜MGOR2@wiki</a></li>
+  <li><a href="https://savemgo.com/">SaveMGO</a></li>
+</ul>
+<p>プレイするにはPS3のリストア機能を使うため、
+  内蔵ハードディスクをすべてリセットする必要があるんだけど、
+  もうあまりプレイしなくなったゲームのセーブデータしか入ってなかったんで、
+  思い切ってやってみた。</p>
+<p>プレイしてみると、本番サーバがよく再現されていて、
+  プレイヤビリティは全く遜色がない。</p>
+<p>ただ、ここまでしてプレイするプレイヤーってのは、
+  相当やりこんだプレイヤーであることが予想される。</p>
+<p>自分の腕が相当鈍っているというのもあるだろうけど、
+  なかなか太刀打ちできなかったのだった。</p>
+<h2>Macbooc以外のラップトップ</h2>
+<span class="timestamp">[2018-06-21 Thu]</span>
+<p>DELLという選択肢ね。</p>
+<p><a href="https://hachibeechan.hateblo.jp/entry/linux-keyboard-shortcut-is-awful">脱MacBookしようとしてnew XPS 13 2018年モデルにLinuxをいれてみたけどちょっと後悔してるよ</a></p>
+<p>（ややバズったせいか、もとの文が消えている気がする。）</p>
+<p>元記事では、DellのXPSをMacbookProの後釜として選んでいるようだ。</p>
+<p>前はおなじようなことかんがえていた。
+  別にMacを特別好んでいるわけではないので、
+  Linux機としてThinkpadを手に入れようと思ったのだ。</p>
+<p>自分としては</p>
+<ul>
+  <li>軽量で、</li>
+  <li>ある程度開発にも耐えて</li>
+  <li>US配列キーボードが搭載できる</li>
+</ul>
+<p>というのがPCの条件だった。</p>
+<p>最後の条件が結構厳しくて、Thinkpad
+  ぐらいしか選択肢に入らなかったんだけど、
+  DellもUS配列に載せ替えができるのね。</p>
+<p>結局、いろいろ検討したんだけど、いろいろ盛ったりすると結局Macbook Pro
+  買うのとあまり変わらんな、と思ってMacbook Proにしたのでした。</p>
+<p>元記事見ると、やはり、ノートPCにLinux入れて運用するのは、
+  結構気合のいる作業だってことがわかる。</p>
+<h2>Java Script について試行錯誤</h2>
+<span class="timestamp">[2018-06-29 Fri]</span>
+<p>JavaScriptを書くことがあるんだけど、クラスの実装やら、
+  インスタンスまわりの設計についていろいろ悩んでいる。
+  一応決着付きそうな感じなので、メモ。</p>
+<h3>素朴な実装</h3>
+<p>何も考えずにjsを書いていくとこうなっていく..</p>
+<pre class="src">
+var value;
+function method1() {
+  value++;
+  console.log(&quot;value is &quot; + value);
+}
+
+function method2() {
+}
+
+ :
+</pre>
+<p>これでも悪くはない。でも、割とすぐに破綻してしまう。
+  やはり変数のスコープや値やメソッドの保持の仕方を考えないと、
+  設計にすぐ行き詰まってしまうのだ。</p>
+<h3>名前空間</h3>
+<p>JSはHTML側で勝手に読んでくるので、自分が定義する変数やメソッドが
+  グローバルにあるかどうかが重要になってくる。例えば</p>
+<pre class="src">
+function add(a, b){
+  return(a + b);
+}
+</pre>
+<p>なんてしたときに既存の <code>add</code> を書き換えてしまっているかもしれない。
+  これをグローバル汚染という。</p>
+<p>グローバル汚染を防ぐのであれば、単純に名前空間を導入すればいい。</p>
+<pre class="src">
+var NameSpace = NameSpace || {};
+
+NameSpace = {
+  method1: function(a, b) {
+    return (a+b);
+  },
+  method2: function() {
+    console.log(&quot;result is&quot; + NameSpace.method1(1, 2));
+  }
+};
+// 呼ぶとき
+NameSpace.method2();
+</pre>
+<p>上記では <code>method1</code> も <code>method2</code> も毎回名前空間である <code>NameSpace</code>
+  をつけなければ呼ぶことができない。</p>
+<p>これでどれだけベタな命名をしても他のメソッド名とかぶる心配がなくなり、
+  名前空間の管理だけしておけば良いことになる。</p>
+<p>ただし、このパターンはオブジェクト指向ではない。
+  インスタンスを持っていないためだ。</p>
+<h3>クラス</h3>
+<p>そこで、クラスを導入する。最新の仕様だと <code>class</code>
+  が導入されているが、IEでは動かないため、今回は考えない。</p>
+<p>ここではクラス <code>MyClass</code> を導入することを考える。</p>
+<pre class="src">
+var MyClass = function(name) {
+ this.name = name;
+};
+
+MyClass.prototype.method1 = function() {
+  return this.name;
+};
+
+MyClass.prototype.method2 = function() {
+  console.log(&quot;hello,&quot; + this.method1);
+};
+
+new MyClass(&quot;john&quot;).method2();
+</pre>
+<p>この実装で、クラスの振る舞いをもたせることができる。
+  インスタンスメソッドや、フィールドを持つことができるため、
+  オブジェクト指向プログラミングが可能になる。</p>
+<p>また、メソッドの実装部は下記のようにしてもよい。</p>
+<pre class="src">
+MyClass.prototype = {
+  method1: function() {
+    return this.name;
+  },
+  method2: function() {
+    console.log(&quot;hello,&quot; + this.method1);
+  }
+}
+</pre>
+<p>ただし、このパターンだと、すべてのメソッドがパブリックになってしまう。
+  このパターンの場合のように、プライベートメソッドや変数が
+  宣言できない場合、冒頭にアンダースコアをつけ、</p>
+<pre class="src">
+MyClass.prototype._privateMethod = function() {..};
+</pre>
+<p>のようにすることもあるが、外部から呼び出すことは可能なので、
+  あまり効果があるとはいえない。</p>
+<h3>モジュールパターン導入</h3>
+<p>最近はモジュールパターンを導入しつつ、
+  インスタンス生成を簡素化するため、
+  以下のようなパターンを用いている。</p>
+<pre class="src">
+MyClass = (function() {
+  // 1
+  var name;
+  var self;
+  // 2
+  function Klass() {
+        // 3
+        self = this;
+  };
+  Klass.prototype = {
+        // 4
+        publicMethod1: function() {
+        },
+        publicMethod2: function() {
+        }
+  };
+  // 5
+  function privateMethod() {
+        self.publicMethod2();
+  };
+  // 6
+  return Klass;
+})();
+</pre>
+<p>インスタンスを作るときは以下のようにすれば良い</p>
+<pre class="src">
+var instance = new MyClass();
+</pre>
+<p>一つの名前空間に対して唯一のクラスを実装するときに有効なパターンだ。</p>
+<p>まず、1では、プライベートな変数を宣言している。
+  この名前空間の中では <code>value</code> の形で利用可能だ。
+  名前空間や <code>this</code> をいちいちつける必要もない。</p>
+<p>2 でコンストラクタを実装している。</p>
+<p>3 で <code>self</code> を宣言している。これは、 <code>this</code> が指す内容が
+  各スコープごとで変わってしまうためだ。
+  例えば、 5 でのプライベートメソッドや、
+  コールバック登録時の匿名メソッド内などで <code>this</code> の内容が変わってしまう。
+  これをコンストラクタ内で <code>self</code> に固定してしまうことにより、
+  いつでもこのインスタンスを指すハンドラを呼び出すことができる。</p>
+<p>4 では、パブリックメソッドを宣言している。外部からは
+  <code>instance.publicMethod1();</code> のように利用可能だ。
+  ただし、内部からは <code>this</code> を使って呼び出す必要がある。</p>
+<p>5 はプライベートメソッドだ。
+  内部からは利用可能であり、内部変数も呼び出し可能である。</p>
+<p>6 でこのクラスを返している。
+  このように返すと、
+  名前空間を意識せずにインスタンスを生成することができる。</p>
+<h3>おわりに</h3>
+<p>JavaScriptは生粋なオブジェクト指向言語ではない。
+  オブジェクト指向プログラミングをする場合、
+  上記のように自分で、構造から定義してやる必要がある。</p>
+<p>最初はとっつきにくかったが、やってみると、
+  最近は楽しみすら感じるようになってきた。</p>
+<p>規模や目的によって、どこまでオブジェクト指向するのか
+  あるいは異なるパラダイムを導入するのか、
+  決めていく言語なんだと感じている。</p>
+    </article>
+    
+    
+    <footer>
+      <nav>
+	<ul>
+	  <li><a href="/">BACK</a></li>
+	</ul>
+      </nav>
+      <p>Copyright 2018</p>
+    </footer>
+  </body>
+</html>
+
