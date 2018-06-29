@@ -45,7 +45,7 @@
     <HEADER>
       <nav>
 	<ul>
-	  <li class="menu"><a href="/diary.html">DIARY</a></li>
+	  <li class="menu"><a href="/diary">DIARY</a></li>
 	  <li class="menu" id="menu-aboutme"><a href="/about">ABOUT</a></li>
 	  
 	  <li class="menu" id="menu-articles"><a href="/article">ARTICLES</a></li>
@@ -57,10 +57,21 @@
       <div id="url" style="display:none;">https://medaka.github.io//article/caputure-a-screenshot-org-mode.html</div>
       <h2>Capturing a screenshot in org-mode</h2>
 <p>Org-mode in Emacs is one of best writing tool for me.</p>
+<p>When I memorized something, I used to open an another tool such as
+  Evernote, MS Onenote or something. These tools have WYSIWYG interface,
+  which seem to be quite user-friendly.</p>
+<p>What I stopped using the tools is it forced me to think about
+  layouts. I wanted to think about only contents but visual.</p>
+<p>I started use org-mode, it goes well. I can focus only writing.</p>
+<p>But it annoys me when I paste images.</p>
+<p>So I wrote  change below:</p>
+<p>init.el is like this:</p>
 <pre class="src">
 (require &#39;org-attach-screenshot)
 (setq org-attach-screenshot-command-line &quot;screencapture -s %f&quot;)
 </pre>
+<p>I want to let the big image thumbnailed and linking to originai image.
+  I change original .el file like this.</p>
 <pre class="src">
 -	  (insert (concat &quot;[[file:&quot; linkfilename &quot;]]&quot;))
 +	  (insert (concat &quot;#+attr_html: :width 300px\n[[file:&quot; linkfilename &quot;][file:&quot; linkfilename &quot;]]&quot;))
