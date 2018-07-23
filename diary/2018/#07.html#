@@ -40,15 +40,15 @@
       <H1 class="title"> Mdk-Memo </H1>
     </HEADER>
     <article id="main-article">
-      <div id="url" style="display:none;">https://medaka.github.io//diary/2018/07.html</div>
-      <h2 id="UcA4QRF4">最近のゲームの物量</h2>
+      <div id="url" style="display:none;">https://medaka.github.io//diary/2018/#07.html#</div>
+      <h2 id="MmVTwsy9">最近のゲームの物量</h2>
 <p>[2018-07-07 土]</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3fjm0WhQdV0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 <p>ちょくちょくゲームはやるものの、据置きゲーム機は買わなくなってしまった。</p>
 <p>久々にトレーラを見ると、各ゲームすごいことになっているな。。</p>
 <p>ただ、各ゲームとも、全体的に雰囲気が暗いように感じる。
   おそらく「リアル感」を追求するには、暗い雰囲気のほうがいいんだろうけど。</p>
-<h2 id="nsID1K8p">AIを哲学から考える</h2>
+<h2 id="AXMzjHon">AIを哲学から考える</h2>
 <p>[2018-07-17 火]</p>
 <p>何気なくはてなブックマークを見ていると、こんな記事があった。</p>
 <p><a href="http://gendai.ismedia.jp/articles/-/56489">「AIは人間を超える」なんて、本気で信じているんですか？ | 現代ビジネス</a></p>
@@ -67,7 +67,7 @@
   おそらくジワジワと広がっていき、果たしてシンギュラリティを
   こえたのかこえてないのかの議論がそのうちなされるんだろうなあ
   と思う次第なのであった。</p>
-<h2 id="sapV0gHK">PicoLisp による Android 開発</h2>
+<h2 id="usWHS2Yx">PicoLisp による Android 開発</h2>
 <p>[2018-07-19 木]</p>
 <p>Lisp による Android 開発って Closure だったイメージだった。
   PicoLisp っていう、Lisp 方言なのかな？これでも開発できるみたい</p>
