@@ -41,14 +41,14 @@
     </HEADER>
     <article id="main-article">
       <div id="url" style="display:none;">https://medaka.github.io//diary/2018/07.html</div>
-      <h2 id="zcvOa3rb">最近のゲームの物量</h2>
+      <h2 id="DVSU7Ii5">最近のゲームの物量</h2>
 <p>[2018-07-07 土]</p>
 <iframe width="560" height="315" src="https://www.youtube.com/embed/3fjm0WhQdV0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
 <p>ちょくちょくゲームはやるものの、据置きゲーム機は買わなくなってしまった。</p>
 <p>久々にトレーラを見ると、各ゲームすごいことになっているな。。</p>
 <p>ただ、各ゲームとも、全体的に雰囲気が暗いように感じる。
   おそらく「リアル感」を追求するには、暗い雰囲気のほうがいいんだろうけど。</p>
-<h2 id="zzSPeTQk">AIを哲学から考える</h2>
+<h2 id="rMd3ZtSt">AIを哲学から考える</h2>
 <p>[2018-07-17 火]</p>
 <p>何気なくはてなブックマークを見ていると、こんな記事があった。</p>
 <p><a href="http://gendai.ismedia.jp/articles/-/56489">「AIは人間を超える」なんて、本気で信じているんですか？ | 現代ビジネス</a></p>
@@ -67,7 +67,7 @@
   おそらくジワジワと広がっていき、果たしてシンギュラリティを
   こえたのかこえてないのかの議論がそのうちなされるんだろうなあ
   と思う次第なのであった。</p>
-<h2 id="ZSFkBiG5">PicoLisp による Android 開発</h2>
+<h2 id="Zg3aWWi0">PicoLisp による Android 開発</h2>
 <p>[2018-07-19 木]</p>
 <p>Lisp による Android 開発って Closure だったイメージだった。
   PicoLisp っていう、Lisp 方言なのかな？これでも開発できるみたい</p>
@@ -82,6 +82,76 @@
 <p>全然調査してないんだけど、Lisp を実用的に勉強したい
   なんて場合に役に立つかもしれないなあ。
   実用上はちょっとむずかしいかもしれない。</p>
+<h2 id="cNIkCLnn">データサイエンティフィック</h2>
+<p>[2018-07-23 月]</p>
+<p>最近早く帰れるので、家でもいろいろ実験したいな、と思いつつ、
+  でもそのためにわざわざPythonを会得するのもなあと思いつつ。
+  まあ、ちょっとしたスクリプトとかはいいんだけど、
+  やっぱり配列とかハッシュの持ち方とかさあ。
+  ちょっとずつ違うわけで。</p>
+<p>今日見たので、ネタにしたいのはこれ
+  <a href="https://tjo.hatenablog.com/entry/2017/03/07/190000">ベイズ構造時系列モデルを推定する{bsts}パッケージを試してみた | 六本木で働くデータサイエンティストのブログ</a></p>
+<p>とりあえずメモ。
+  仮想通貨相場も相まって、相場予想をどうするかってのに
+  ちょっと興味ある。サンプルではうまくいってないようだけど、
+  まあ、素人が予想するよりもいいはずだし。</p>
+<p>で、これをRubyでなんとかしたいんだけど、当然そんな気の利いたライブラリ
+  はないわけ（あまり探してないけど）。
+  なので、RubyとRを連携してみる。どうやら、RubyからRをキックする方法と
+  Rをサービス化して相互通信させる方法があるようだ。
+  なんだか後者のほうが新しい情報が揃っているようなので、後者を試してみる。</p>
+<p>とりあえず R をインストール。何も考えず</p>
+<pre class="src">
+$ brew install R
+</pre>
+<p>で、Rを立ち上げて適当にみつくろった<a href="https://gist.github.com/samuelleach/93446c486a9483635dbd">スクリプト</a> を入れようとすると</p>
+<pre class="src">
+&gt; library(Rserve)
+ エラー: package or namespace load failed for ‘Rserve’:
+ package ‘Rserve’ was installed by an R version with different internals; it needs to be reinstalled for use with this R version
+</pre>
+<p>さすがにそうすんなりとはいかないかあ。</p>
+<h2 id="2qSyqo3h">データサイエンティフィック 2</h2>
+<p>[2018-07-24 火]</p>
+<p>もうちょい粘ってみるが‥よくわからない</p>
+<p>ただ、インストールしようとしている Rserve がやや古いようなので、
+  上記スクリプトを少し変更した。</p>
+<pre class="src">
+- pkg_url &lt;- &quot;http://cran.r-project.org/bin/macosx/mavericks/contrib/3.1/Rserve_1.7-3.tgz&quot;
++ pkg_url &lt;- &quot;https://www.rforge.net/Rserve/snapshot/Rserve_1.8-6.tar.gz&quot;
+</pre>
+<p>しかし今度はコンパイルエラーが‥</p>
+<pre class="src">
+ERROR: compilation failed for package ‘Rserve’
+</pre>
+<p>ううん、なんかCのライブラリが足りてないのかなあ‥
+  https://stackoverflow.com/questions/11151197/ld-library-not-found-for-lintl-on-mac-os-x-lion</p>
+<pre class="src">
+$ brew link gettext
+</pre>
+<h2 id="qkE1q8F7">データサイエンティフィック 3</h2>
+<p>[2018-07-28 土]</p>
+<p>結局R自体は brew でインストールできるものでなく、
+  公式から pkg ファイルを落としてきて、無事 Rserve
+  もインストールすることができた。</p>
+<p><a href="https://cran.r-project.org/bin/macosx/">R for Mac OS X | CRAN</a></p>
+<p>でも正直 R にこだわる必要もなく、
+  最近は Python がやたら流行ってきてるし、そっちでもいいかもしれない、
+  と思い始めた。
+  書店に赴き、書架を眺めても、RとPythonは半々ぐらいに思える。
+  あと、Rは学生の時使って、たしかにグラフ化とかは便利なんだけど、
+  どうも使い方が難しい。
+  やっぱりプログラマが扱うには、Pythonが扱いやすいかもなあと
+  思った。なので、ちょっとそっちも検討してみよう。</p>
+<p>で、アルゴリズムのほうもいろいろ調査してるんだけど、
+  機械学習のアルゴリズムのひとつのランダムフォレストなる手法が
+  色んな所で聞くようになった。
+  学生のときにはあまりきかない手法だったのだけど。</p>
+<p>Pythonでデータ扱うならScikitか。
+  <a href="https://github.com/scikit-learn/scikit-learn">Scikit | github</a></p>
+<p>統計は SciPy, グラフは Pyplot, 基本的な数値計算は Numpy か。
+  僕は Ruby 信者なんだけど、そりゃあこんだけ道具揃ってたら、
+  はやりますわな。</p>
     </article>
     
     
