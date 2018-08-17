@@ -3,18 +3,31 @@ margin: 0;
 padding: 0;
 }
 
+/* As hex codes */
+
+.color-primary-0 { color: #1A1A1A }	/* Main Primary color */
+.color-primary-1 { color: #323F54 }
+.color-primary-2 { color: #4772BA }
+.color-primary-3 { color: #345387 }
+.color-primary-4 { color: #5B91ED}
+
 body {
-    background-color: #f9f9f9; /* 全体の背景色 */
+    //    background-color: #f9f9f9; /* 全体の背景色 */
+    color: #1A1A1A;
 }
 
 @media screen and  (min-width: 240px) and (max-width: 999px) {
     /*　画面サイズ 500pxから999pxまで適用　*/
     article {width: 90%;}
+    header {width: 90%;}
+    footer nav {width: 90%;}
     .disqus-wrapper{width: 90%;}
 }
 @media screen and (min-width:1000px) {
     /*　画面サイズ 1000px以上から適用　*/
     article {width: 63%}
+    header  {width: 63%;}
+    footer nav{width: 63%;}
     .disqus-wrapper{width: 63%;}
 }
 
@@ -22,13 +35,14 @@ article {
     margin: auto;
     padding: 0;
     background-color: #ffffff; /* 全体の背景色 */
-    color: #555;
+    color: #323F54;
     line-height: 1.7;
     font-family: YuGothic,游ゴシック,Meiryo,メイリオ,Hiragino Kaku Gothic Pro,ヒラギノ角ゴシック,sans-serif;
 }
 
-header{
-    width:100%;
+header {
+    margin: auto;
+    padding: 0;
 }
 
 nav {
@@ -36,13 +50,25 @@ nav {
     postion: absolute;
     right: 0;
     top: 0;
-    float:
-    height: 50px;
-    border-bottom: 3px double #ccc;
 }
 
 header nav {
-    background-color: #eeeeee; /* 全体の背景色 */
+    background-color: #f9f9f9;
+}
+
+footer {
+    width: 100%;
+    margin-top: 100px;
+}
+
+footer nav {
+    background-color: #f9f9f9;
+    margin: auto;
+}
+
+.back {
+    list-style-type: none;
+    text-align: center;
 }
 
 nav ul {
@@ -55,7 +81,6 @@ nav ul li {
 }
 
 nav ul li a{
-    color: #555;
     padding: 5px;
     display: block;
 }
@@ -69,7 +94,14 @@ ul li {
 ul li.menu {
     list-style-type: none;
     font-family: serif;
-    margin: 0.8em 0 0 0;
+    margin: 0.2em 0 0.2em 0;
+    text-align: center;
+    width: 92px;
+    
+}
+
+li.menu + li.menu {
+  border-right:1px solid #4772BA;
 }
 
 
@@ -83,43 +115,51 @@ ul li.menu {
 
 a {
     font-weight: normal;
-    color: SteelBlue;
+    color: #345387;
+    text-decoration:none;
+}
+a:hover{
+    text-decoration:underline;
 }
 
 p {
     margin: 0.8em 0;
 }
 
+p.copyright {
+    margin: 5px 0;
+}
+
 pre.src {
     margin: 10px 2em;
-    background-color: #dddddd;
+    background-color:  #DDE0E6;
 }
 
 blockquote {
     font-family: "Georgia",serif;
-    color: #696969;    
+    color:  #DDE0E6;    
 }
 @media screen and  (min-width: 240px) and (max-width: 999px) {
     h1.title {
 	font-family: "Georgia",serif;
 	font-size: 48px;
+	padding-top: 1.5em;
 	padding-bottom: .9em;
 	text-align: center;
 	width: 80%;
 	height: 52px;
 	margin: auto;
-	padding: 20px;
     }
 }
 @media screen and  (min-width: 1000px) {
     h1.title {
-	font-family: "Georgia",serif; 
+	font-family: "Georgia",serif;
+	padding-top: .6em;
 	padding-bottom: .6em;
 	text-align: center;
 	width: 60%;
 	height: 30px;
 	margin: auto;
-	padding: 20px;
     }
 }
 
@@ -127,8 +167,8 @@ blockquote {
 h1 {
     font-family: "Georgia",serif; 
     padding-bottom: .5em;
-    border-bottom: 3px double #ccc;
     text-align: center;
+    color: #323F54;
 }
 
 h2 {
@@ -136,6 +176,7 @@ h2 {
     position: relative;
     padding: .25em 0 .5em .75em;
     margin: 48px 0 0 0;
+    color: #323F54;
 }
 h2::after {
 	position: absolute;
@@ -144,7 +185,7 @@ h2::after {
 	content: '';
 	width: 100%;
 	height: 0;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1.2px solid #A8ACB7;
 }
 
 /* h3 { */
