@@ -69,6 +69,46 @@
   いろいろ幅が広がっていいんでない？って感じで。
   そういやRealmもいいってきいたなあ。
   これもさっくり調べてみるか。</p>
+<h2 id="1">ActionCableとAndroid</h2>
+<span class="timestamp">[2018-09-13 木]</span>
+<p>AndroidでActionCableをサブスクライブしたい。
+  ActionCableはRailsで用いられるPush通信のライブラリだ。
+  中身はWebSocketだから、Androidでもサブスクライブできるはずだ。</p>
+<p>で、調べてみると以下の記事がヒット。</p>
+<p><a href="https://qiita.com/noboru_i/items/0a74b2485cbf3696ba0d">ActionCableをAndroidからOkHttpで使ってみる | Qiita</a></p>
+<p>そのものズバリの記事なんだが、OkHttpのバージョンが違うのか、
+  うまくいかない。
+  OkHttp本家のgithubのサンプルを見てみると、以下のようになっていた。</p>
+<pre class="src">
+OkHttpClient client = new OkHttpClient.Builder()
+    .readTimeout(0,  TimeUnit.MILLISECONDS)
+    .build();
+
+Request request = new Request.Builder()
+    .url(&quot;ws://echo.websocket.org&quot;)
+    .build();
+client.newWebSocket(request, this);
+</pre>
+<p><a href="https://github.com/square/okhttp/blob/master/samples/guide/src/main/java/okhttp3/recipes/WebSocketEcho.java">WebSocketEcho.java | github</a></p>
+<p><code>WebSocketCall call = WebSocketCall.create(client, request);</code>
+  から変化しているようだ。どうも古い書き方なのか。</p>
+<p>その後、上記のgithubをコピーして進めるものの、
+  404が返ってきて先へ進めない。</p>
+<p>どうやら</p>
+<pre class="src">
+Request request = new Request.Builder()
+    .url(&quot;ws://echo.websocket.org&quot;)
+</pre>
+<p>の箇所が <code>ws</code> から <code>http</code> へ変換しているようなのだ。また、同様に <code>wss</code>
+  も <code>https</code> に変換されている。
+  つまり <code>wss://sample.com</code> から <code>https://sample.com</code> へ
+  わざわざ変換してしまっているのだ。</p>
+<p>なぜそんな実装が‥
+  そのため、404がかえってきている気がする。</p>
+<p>ライブラリに手を入れてみたものの、いろいろやってもうまくいかない。</p>
+<p>諦めて以下を使うことにした。</p>
+<p><a href="https://github.com/hosopy/actioncable-client-java">actioncable-client-java | github</a></p>
+<p>これも名前はそのものズバリだが、はたして。</p>
     </article>
     
     
