@@ -109,6 +109,46 @@ Request request = new Request.Builder()
 <p>諦めて以下を使うことにした。</p>
 <p><a href="https://github.com/hosopy/actioncable-client-java">actioncable-client-java | github</a></p>
 <p>これも名前はそのものズバリだが、はたして。</p>
+<h2 id="2">ActionCableまとめ</h2>
+<span class="timestamp">[2018-09-29 Sat]</span>
+<p>あれからほどなくしてチャットアプリの試作は完了した。
+  単純に文字に起こすのを面倒くさがって、
+  記録に残すのが今日になってしまった（言い訳）</p>
+<p>また、結局試作に終わってしまい、世に出すようなものには
+  程遠い出来となった。
+  今は他のことに興味が写ってしまったわけだが、まあ、
+  サイドプロジェクトなんてのはそんなものですし（言い訳2）</p>
+<p>で、結局前回の404エラーはなんだったかっていうと
+  スキーマ変換が原因なのではなくて、
+  単純にRailsサーバの設定ミスだったらしい。</p>
+<p><code>config/environments/production.rb</code> 内に以下を追加した。</p>
+<pre class="src">
+config.action_cable.disable_request_forgery_protection = true
+</pre>
+<p>リクエストフォージェリがデフォルトで禁止されているんだけど、
+  それを解除する設定。</p>
+<p>まあ、本番環境だと危険なんで、例えばapi配下だけこれを有効にするとか、
+  そういう配慮は本当は必要なんだけど、まあ、今回はそういうもんだし、
+  ということでどうか。</p>
+<p>あと、そういや、これも必要なのかもしれない。</p>
+<p><code>config/routes.rb</code></p>
+<pre class="src">
+mount ActionCable.server =&gt; '/cable'
+</pre>
+<p>ただ、ローカル環境では、これつけなくても動いていたので、
+  本当に必要かは未調査。</p>
+<p>で、成果物は以下</p>
+<ul>
+  <li>サーバ側（Railsアプリ）:<a href="https://github.com/medaka/dammy-chat-server">dammy-chat-server</a></li>
+  <li>Android側：<a href="https://github.com/medaka/DammyChatClient">DammyChatClient</a></li>
+</ul>
+<p>ActionCableをAndroidでサブスクライブする試作アプリ。
+  一応Rails側も実装している。</p>
+<p>以下でサーバ側は稼働している。</p>
+<p>https://dammy-chat-server.herokuapp.com/users/sign_in</p>
+<p>やっぱりというか、なんというか、ActionCableをRailsで扱うのは
+  結構楽ちんなんだけど、それを外部でも使おうとした瞬間に
+  中身わかってないわけだから、結構苦労するなあと思った。</p>
     </article>
     
     
