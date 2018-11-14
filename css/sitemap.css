@@ -13,18 +13,18 @@ padding: 0;
 
 body {
     //    background-color: #f9f9f9; /* 全体の背景色 */
-    color: #1A1A1A;
+    color: #1A1A1A;p
 }
 
-@media screen and  (min-width: 240px) and (max-width: 999px) {
-    /*　画面サイズ 500pxから999pxまで適用　*/
+@media screen and  (min-width: 240px) and (max-width: 479px) {
+    /*　画面サイズ 240pxから479pxまで適用　*/
     article {width: 90%;}
-    header {width: 90%;}
-    footer nav {width: 90%;}
+    header {width: 100%;}
+    footer nav {width: 100%;}
     .disqus-wrapper{width: 90%;}
 }
-@media screen and (min-width:1000px) {
-    /*　画面サイズ 1000px以上から適用　*/
+@media screen and (min-width:480px) {
+    /*　画面サイズ 480px以上から適用　*/
     article {width: 63%}
     header  {width: 63%;}
     footer nav{width: 63%;}
@@ -140,19 +140,17 @@ blockquote {
     font-family: "Georgia",serif;
     color:  #DDE0E6;    
 }
-@media screen and  (min-width: 240px) and (max-width: 999px) {
+@media screen and  (min-width: 240px) and (max-width: 479px) {
     h1.title {
 	font-family: "Georgia",serif;
-	font-size: 48px;
 	padding-top: 1.5em;
 	padding-bottom: .9em;
 	text-align: center;
-	width: 80%;
-	height: 52px;
+	width: 90%;
 	margin: auto;
     }
 }
-@media screen and  (min-width: 1000px) {
+@media screen and  (min-width: 480px) {
     h1.title {
 	font-family: "Georgia",serif;
 	padding-top: .6em;
