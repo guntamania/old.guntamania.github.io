@@ -5,15 +5,17 @@ padding: 0;
 
 /* As hex codes */
 
-.color-primary-0 { color: #1A1A1A }	/* Main Primary color */
-.color-primary-1 { color: #323F54 }
-.color-primary-2 { color: #4772BA }
-.color-primary-3 { color: #345387 }
-.color-primary-4 { color: #5B91ED}
+:root {
+    --main-black: #1A1A1A;
+    --primary: #323F54;
+    --secondary: #345387;
+    --accent: #4772BA;
+    --main-bg: #FBFBFB;
+}
 
 body {
-    //    background-color: #f9f9f9; /* 全体の背景色 */
-    color: #1A1A1A;p
+    background-color: var(--main-bg); /* 全体の背景色 */
+    color: var(--main-black);
 }
 
 @media screen and  (min-width: 240px) and (max-width: 479px) {
@@ -34,8 +36,8 @@ body {
 article {
     margin: auto;
     padding: 0;
-    background-color: #ffffff; /* 全体の背景色 */
-    color: #323F54;
+    background-color: var(--main-bg); /* 全体の背景色 */
+    color: var(--primary);
     line-height: 1.7;
     font-family: YuGothic,游ゴシック,Meiryo,メイリオ,Hiragino Kaku Gothic Pro,ヒラギノ角ゴシック,sans-serif;
 }
@@ -54,7 +56,6 @@ nav {
 
 header nav {
     background-color: #f9f9f9;
-    font-size: small;
 }
 
 footer {
@@ -69,7 +70,7 @@ footer nav {
 
 .back {
     list-style-type: none;
-    text-align: center;
+    text-align: right;
 }
 
 nav ul {
@@ -79,6 +80,15 @@ nav ul {
 nav ul li {
     float:right;
     width: 120px;
+}
+.cell{
+    display: table-cell;
+    /* width: 23%; */
+    padding: 8px;
+}
+
+span.more {
+    font-size: small;
 }
 
 nav ul li a{
@@ -96,15 +106,13 @@ ul li.menu {
     list-style-type: none;
     font-family: serif;
     margin: 0.2em 0 0.2em 0;
-    text-align: center;
+    text-align: right;
     width: 92px;
-    
 }
 
 li.menu + li.menu {
-  border-right:1px solid #4772BA;
+//  border-right:1px solid #4772BA;
 }
-
 
 .org-ul ul li {
     display: inline;
@@ -145,7 +153,7 @@ blockquote {
 	font-family: "Georgia",serif;
 	padding-top: 1.5em;
 	padding-bottom: .9em;
-	text-align: center;
+	text-align: left;
 	width: 90%;
 	margin: auto;
     }
@@ -153,12 +161,14 @@ blockquote {
 @media screen and  (min-width: 480px) {
     h1.title {
 	font-family: "Georgia",serif;
-	padding-top: .6em;
-	padding-bottom: .6em;
-	text-align: center;
-	width: 60%;
+	padding-top: 2em;
+	padding-bottom: 2em;
+	text-align: left;
+	border-top: solid var(--primary) 2px;
+	border-bottom: solid var(--primary) 2px;
 	height: 30px;
 	margin: auto;
+	background: 
     }
 }
 
@@ -233,13 +243,17 @@ img {
 }
 
 .diary-list {
+    list-style-type: none;
     font-size: 18px;
     margin-bottom: 12px;
 }
 
 .diary-class {
     font-size: 10px;
-    margin-left: 24px;
     font: #242424
+}
+
+nav.footer {
+    border-top: solid var(--primary) 2px;
 }
 
