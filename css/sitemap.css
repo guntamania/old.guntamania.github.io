@@ -31,7 +31,7 @@ body {
     header  {width: 63%;}
     footer nav{width: 63%;}
     .disqus-wrapper{width: 63%;}
-}
+} 
 
 article {
     margin: auto;
@@ -81,11 +81,20 @@ nav ul li {
     float:right;
     width: 120px;
 }
-.cell{
-    display: table-cell;
-    /* width: 23%; */
-    padding: 8px;
+
+@media screen and  (min-width: 240px) and (max-width: 479px) {
+    .cell{
+	display: block;
+	/* width: 23%; */
+    }
 }
+@media screen and (min-width:480px) {
+    .cell{
+	display: table-cell;
+	/* width: 23%; */
+	padding: 8px;
+    }
+} 
 
 span.more {
     font-size: small;
@@ -154,6 +163,8 @@ blockquote {
 	padding-top: 1.5em;
 	padding-bottom: .9em;
 	text-align: left;
+	 border-top: solid var(--primary) 2px;
+	border-bottom: solid var(--primary) 2px;
 	width: 90%;
 	margin: auto;
     }
