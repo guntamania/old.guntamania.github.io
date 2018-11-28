@@ -80,6 +80,35 @@
   あまりそれを理由に転職というのは聞いたことがない。</p>
 <p>あってもあまり内部の人間には言わないのかもね..
   仮にそうだとしたら、改善するきっかけは永遠にこないままだ。</p>
+<h2 id="2">PWAにおける manifest.json</h2>
+<span class="timestamp">[2018-11-28 Wed]</span>
+<p>最近PWA（Progressive Web Application）について嗅ぎ回っている。</p>
+<p>PWA自体はGoogleの記事が非常に参考になる。</p>
+<p><a href="https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/?hl%3Dja">はじめてのプログレッシブ ウェブアプリ | Web Fundamentals</a></p>
+<p>PWAを実装するときにはいろいろ手順があるんだけど、
+  ランチャーアイコンを設定したり、Webアプリのタイトル等
+  のメタ情報を与えるときには <code>manigest.json</code>
+  を設置してやる必要がある。</p>
+<p><a href="https://developers.google.com/web/fundamentals/codelabs/your-first-pwapp/?hl%3Dja">ウェブアプリ マニフェスト | Web Fundamentals</a></p>
+<p>とくにこの中で <code>start_url</code> を動的に変更したい、
+  ということがあった
+  （精算ちゃんでは部屋ごとにURLというか、エントリーポイントが異なるため、
+  ここを動的に変更したいのだ）。
+  これがなかなか探してもみつからない。</p>
+<p>結果的に参考になったのは以下記事のみだった。</p>
+<p><a href="https://medium.com/@alshakero/how-to-setup-your-web-app-manifest-dynamically-using-javascript-f7fbee899a61">How to Setup Your Web App Manifest Dynamically Using Javascript</a></p>
+<p>要するに <code>manifest.json</code> に相当するjsonを作ってやり、
+  それを <code>link</code> 要素に割り当ててやるもののようだ。
+  正直力技のような気がする。
+  特に設定値をプログラム側で持ってしまうのが微妙に良くない気がするのだ。</p>
+<p>他の方法として、 <code>start_url</code> を静的に決定し、
+  その後リダイレクトする手段も考えられる。
+  しかし、この場合、PWAの設計的にキャッシュがうまくいかないようだ。</p>
+<p><a href="https://developers.google.com/web/tools/lighthouse/audits/cache-contains-start_url?hl%3Dja">キャッシュにマニフェストの start_url を保持する | Tools for Web
+  Developers</a></p>
+<p>そんなわけで、 <code>start_url</code> なり他の要素なりを
+  あまり動的に変えてやるのはあまり良くない気がしてきた..</p>
+<p>まだもうちょっと思案してみよう。</p>
     </article>
     
     
