@@ -4,11 +4,10 @@ padding: 0;
 }
 
 /* As hex codes */
-
 :root {
     --main-black: #1A1A1A;
     --primary: #323F54;
-    --secondary: #345387;
+    --secondary: #426aac;
     --accent: #4772BA;
     --main-bg: #FBFBFB;
 }
@@ -133,7 +132,7 @@ li.menu + li.menu {
 
 a {
     font-weight: normal;
-    color: #345387;
+    color: var(--secondary);
     text-decoration:none;
 }
 a:hover{
@@ -158,37 +157,41 @@ blockquote {
     color:  #DDE0E6;    
 }
 @media screen and  (min-width: 240px) and (max-width: 479px) {
-    h1.title {
+    .title {
 	font-family: "Georgia",serif;
+	width: 90%;
+	margin: auto;
 	padding-top: 1.5em;
 	padding-bottom: .9em;
 	text-align: left;
-	 border-top: solid var(--primary) 2px;
-	border-bottom: solid var(--primary) 2px;
-	width: 90%;
-	margin: auto;
     }
 }
 @media screen and  (min-width: 480px) {
-    h1.title {
+    .title {
 	font-family: "Georgia",serif;
 	padding-top: 2em;
 	padding-bottom: 2em;
 	text-align: left;
-	border-top: solid var(--primary) 2px;
-	border-bottom: solid var(--primary) 2px;
 	height: 30px;
 	margin: auto;
-	background: 
     }
 }
 
 
-h1 {
+.title {
+    text-align: left;
     font-family: "Georgia",serif; 
-    padding-bottom: .5em;
-    text-align: center;
-    color: #323F54;
+    color: var(--primary);
+    border-top: solid var(--primary) 2px;
+    border-bottom: solid var(--primary) 2px;
+}
+
+a.title {
+    border-top: none;
+    border-bottom: none;
+    padding-top: 0;
+    padding-bottom: 0;
+    font-weight: bold;
 }
 
 h2 {
