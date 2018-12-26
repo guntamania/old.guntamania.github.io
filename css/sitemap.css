@@ -148,13 +148,19 @@ p.copyright {
 }
 
 pre.src {
+    background-color: #F3F3F3;
+    border: solid 1px #E2E2E2;
+    padding: 8px;
     margin: 10px 2em;
-    background-color:  #DDE0E6;
+    font-size: 0.93em;
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
 }
 
 blockquote {
     font-family: "Georgia",serif;
-    color:  #DDE0E6;    
+    margin: 0em 2em;
+    background: #E9E9E9;
+    padding: 0em 2em;
 }
 @media screen and  (min-width: 240px) and (max-width: 479px) {
     .title {
@@ -271,3 +277,7 @@ nav.footer {
     border-top: solid var(--primary) 2px;
 }
 
+code {
+    background-color: #F3F3F3;
+    border: solid 1px #E2E2E2;   
+}
