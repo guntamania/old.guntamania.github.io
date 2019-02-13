@@ -6,9 +6,9 @@ padding: 0;
 /* As hex codes */
 :root {
     --main-black: #1A1A1A;
-    --primary: #323F54;
-    --secondary: #426aac;
-    --accent: #4772BA;
+    --primary: 	#404040;
+    --secondary: #808080;
+    --accent: #426aac;
     --main-bg: #FBFBFB;
 }
 
@@ -53,8 +53,9 @@ nav {
     top: 0;
 }
 
-header nav {
-    background-color: #f9f9f9;
+h1 nav {
+    font-size: small;
+    float: right
 }
 
 footer {
@@ -78,20 +79,43 @@ nav ul {
 
 nav ul li {
     float:right;
-    width: 120px;
+    width: 5em;
+}
+
+.cell-icon {
+    font-size: 120pt;
+    display: block;
+    margin: 10px;
+}
+
+.diary-items {
+    display: inline;
+    margin: 10px;
 }
 
 @media screen and  (min-width: 240px) and (max-width: 479px) {
+    .cell-wrapper {
+	margin-top: 30px;
+	display: block;
+    }
     .cell{
 	display: block;
-	/* width: 23%; */
+	text-align: center;
     }
 }
 @media screen and (min-width:480px) {
+    .cell-wrapper {
+	margin-top: 30px;
+	display: flex;
+    }
     .cell{
-	display: table-cell;
-	/* width: 23%; */
+	text-align: center;
 	padding: 8px;
+	display: flex;
+	width: 100%;
+	padding: 8px;
+	align-items: flex-end;
+	justify-content: center;
     }
 } 
 
@@ -115,11 +139,6 @@ ul li.menu {
     font-family: serif;
     margin: 0.2em 0 0.2em 0;
     text-align: right;
-    width: 92px;
-}
-
-li.menu + li.menu {
-//  border-right:1px solid #4772BA;
 }
 
 .org-ul ul li {
@@ -132,7 +151,7 @@ li.menu + li.menu {
 
 a {
     font-weight: normal;
-    color: var(--secondary);
+    color: var(--accent);
     text-decoration:none;
 }
 a:hover{
@@ -214,7 +233,7 @@ h2::after {
 	content: '';
 	width: 100%;
 	height: 0;
-	border-bottom: 1.2px solid #A8ACB7;
+	border-bottom: 1.2px solid var(--secondary);
 }
 
 /* h3 { */
