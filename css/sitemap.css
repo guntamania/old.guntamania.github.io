@@ -53,11 +53,6 @@ nav {
     top: 0;
 }
 
-h1 nav {
-    font-size: small;
-    float: right
-}
-
 footer {
     width: 100%;
     margin-top: 100px;
@@ -83,7 +78,7 @@ nav ul li {
 }
 
 .cell-icon {
-    font-size: 120pt;
+    font-size: 12vh;
     display: block;
     margin: 10px;
 }
@@ -99,23 +94,44 @@ nav ul li {
 	display: block;
     }
     .cell{
-	display: block;
+	font-family: serif;
 	text-align: center;
+	height: 60vh;
+	display: flex;
+	-webkit-align-items: center;
+	align-items: center;
+	-webkit-justify-content: center;
+	justify-content: center;
     }
+    .cell-icon {
+	font-size: 20vh;
+	display: block;
+	margin: 10px;
+    }
+    h1 nav {
+	font-size: medium;
+    }
+
 }
 @media screen and (min-width:480px) {
     .cell-wrapper {
-	margin-top: 30px;
+	margin-top: 24vh;
+	margin-bottom: 24vh;
 	display: flex;
     }
     .cell{
 	text-align: center;
+	font-family: serif;
 	padding: 8px;
 	display: flex;
 	width: 100%;
 	padding: 8px;
 	align-items: flex-end;
 	justify-content: center;
+    }
+    h1 nav {
+	font-size: medium;
+	float: right
     }
 } 
 
@@ -199,6 +215,9 @@ blockquote {
 	text-align: left;
 	height: 30px;
 	margin: auto;
+    }
+    nav ul li a {
+	color: var(--secondary);
     }
 }
 
