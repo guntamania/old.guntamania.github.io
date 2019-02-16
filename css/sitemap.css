@@ -77,36 +77,22 @@ nav ul li {
     width: 5em;
 }
 
-.cell-icon {
-    font-size: 12vh;
-    display: block;
-    margin: 10px;
-}
-
 .diary-items {
     display: inline;
     margin: 10px;
 }
 
 @media screen and  (min-width: 240px) and (max-width: 479px) {
+    .top-image {
+	height: 70vh;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: url('/data/top.jpg');
+	margin-bottom: 5vh;
+    }
     .cell-wrapper {
-	margin-top: 30px;
-	display: block;
-    }
-    .cell{
-	font-family: serif;
-	text-align: center;
-	height: 60vh;
-	display: flex;
-	-webkit-align-items: center;
-	align-items: center;
-	-webkit-justify-content: center;
-	justify-content: center;
-    }
-    .cell-icon {
-	font-size: 20vh;
-	display: block;
-	margin: 10px;
+	display: none;
     }
     h1 nav {
 	font-size: medium;
@@ -114,9 +100,16 @@ nav ul li {
 
 }
 @media screen and (min-width:480px) {
+    .top-image {
+	height: 50vh;
+	background-position: center center;
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-image: url('/data/top.jpg');
+    }
     .cell-wrapper {
-	margin-top: 24vh;
-	margin-bottom: 24vh;
+	margin-top: 8px;
+	margin-bottom: 12vh;
 	display: flex;
     }
     .cell{
