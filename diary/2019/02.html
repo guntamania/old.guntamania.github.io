@@ -104,7 +104,7 @@
   rubyを学んだときの感覚が蘇る..</p>
 <p>身近なところでいうと、エルビス演算子が便利だ。</p>
 <pre class="src" lang="kotlin">
-val myName =hoge?.fuga?.name ?: &quot;no_name&quot;
+val myName = hoge?.fuga?.name ?: &quot;no_name&quot;
 </pre>
 <p>みたいな。rubyだと</p>
 <pre class="src" lang="ruby">
@@ -113,6 +113,16 @@ my_name = hoge&amp;.fuga&amp;.name || <span style="background-color:hsla(0,100%,
 <p>となるのかな。
   どちらの例も <code>hoge</code> や <code>fuga</code> が <code>null</code> の場合、
   きちんと右辺から <code>no_name</code> が返るようになっている。</p>
+<p>これ、まともにJavaでやろうとすると</p>
+<pre class="src" lang="java">
+<span style="color:#0a8;font-weight:bold">String</span> myName = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">no_name</span><span style="color:#710">&quot;</span></span>;
+<span style="color:#080;font-weight:bold">if</span> (<span style="color:#069">null</span> != hoge &amp;&amp; <span style="color:#069">null</span> != hoge.fuga &amp;&amp; <span style="color:#069">null</span> != hoge.fuga.name) {
+  myName = hoge.fuga.name;
+}
+</pre>
+<p>となるんだな。
+  何も考えず書いてたもんだけど、
+  改めて比べると、ずいぶんとレガシーなコードを書いてたもんだと思う。</p>
 <p>ただ、rubyだと最後の <code>||</code> が左式が <code>false</code> の場合も評価されるわけで。
   ややテクニカルすぎるきらいがあるな、と思った。</p>
     </article>
