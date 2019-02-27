@@ -96,6 +96,25 @@
   せめてアプリ名で検索すればトップに出てきてほしい所存だ。</p>
 <p>ただその前に実は是非実装したい機能があるのだ。。
   なんとかそれを終わらせにゃ。。</p>
+<h2 id="3">kotlinやりつつ</h2>
+<span class="timestamp">[2019-02-27 Wed]</span>
+<p>kotlinを本格的に使えるようになってきた。
+  なんというか、やはりかゆいところに手が届く言語だなと思う。
+  JVM言語だし、型安全だとなめていたんだけど..
+  rubyを学んだときの感覚が蘇る..</p>
+<p>身近なところでいうと、エルビス演算子が便利だ。</p>
+<pre class="src" lang="kotlin">
+val myName =hoge?.fuga?.name ?: &quot;no_name&quot;
+</pre>
+<p>みたいな。rubyだと</p>
+<pre class="src" lang="ruby">
+my_name = hoge&amp;.fuga&amp;.name || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">no_name</span><span style="color:#710">&quot;</span></span>
+</pre>
+<p>となるのかな。
+  どちらの例も <code>hoge</code> や <code>fuga</code> が <code>null</code> の場合、
+  きちんと右辺から <code>no_name</code> が返るようになっている。</p>
+<p>ただ、rubyだと最後の <code>||</code> が左式が <code>false</code> の場合も評価されるわけで。
+  ややテクニカルすぎるきらいがあるな、と思った。</p>
     </article>
     
     
