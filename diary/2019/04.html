@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
     <link rel="stylesheet"
-          href="css/sitemap.css"
+          href="/css/sitemap.css"
           type="text/css"/>
     <script type="text/javascript"
 	    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -43,46 +43,32 @@
       </H1>
     </HEADER>
     <article id="main-article">
-      <div id="url" style="display:none;">https://medaka.github.io//diary/2018/09.html</div>
-      <div class="top-image">
-</div>
-<div class="cell-wrapper">
-  <div class="cell">
-    <a href="about">
-      <!-- <i class="cell-icon fas fa-info-circle"></i> -->
-      ABOUT
-    </a>
-  </div>
-
-  <div class="cell">
-    <a href="diary">
-      <!-- <i class="cell-icon fas fa-book"></i> -->
-      DIARY
-    </a>
-  </div>
-
-  <div class="cell">
-    <a href="works">
-      <!-- <i class="cell-icon fas fa-palette"></i> -->
-      WORKS
-    </a>
-  </div>
-</div>
-
-<h2>Recent</h2>
-
-  <li class="diary-list"> <div class="diary-class">[2019-04-09 Tue]</div><a href="/diary/2019/04.html#0">vue.js でオブジェクトやハッシュを扱う </a></li>
-
-  <li class="diary-list"> <div class="diary-class">[2019-02-27 Wed]</div><a href="/diary/2019/02.html#3">kotlinやりつつ </a></li>
-
-  <li class="diary-list"> <div class="diary-class">[2019-02-20 Wed]</div><a href="/diary/2019/02.html#2">せっかく就職したんだし </a></li>
-
-  <li class="diary-list"> <div class="diary-class">[2019-02-18 Mon]</div><a href="/diary/2019/02.html#1">脱ニート </a></li>
-
-  <li class="diary-list"> <div class="diary-class">[2019-02-13 Wed]</div><a href="/diary/2019/02.html#0">ニート生活終了間際 </a></li>
-
-<a href="diary"><span class="more">more <i class="fas fa-chevron-circle-down"></i></span></a>
-
+      <div id="url" style="display:none;">https://medaka.github.io//diary/2019/04.html</div>
+      <h2 id="0">vue.js でオブジェクトやハッシュを扱う</h2>
+<span class="timestamp">[2019-04-09 Tue]</span>
+<p>あまり更新しなくなってしまった。
+  転職して生活ペースが変わってしまったせいか..</p>
+<p>vue.jsでつまっていたところが最近解決できた。</p>
+<pre class="src" lang="js">
+data() {
+  <span style="color:#080;font-weight:bold">return</span> {
+    hash = {}
+  }
+}
+</pre>
+<p>とかやっといて、 <code>hash</code> にハッシュをつっこんだときに画面を更新したい。</p>
+<pre class="src">
+hash.foo = &quot;new string&quot;
+</pre>
+<p>とやっても、画面が更新されない。
+  プロパティの追加はサポートしてないようだ。</p>
+<p>このとき、 <code>$set</code> を使えばvueに対し更新を通知できる。</p>
+<pre class="src" lang="js">
+<span style="color:#369;font-weight:bold">$set</span>(hash, foo, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new string</span><span style="color:#710">&quot;</span></span>)
+</pre>
+<p>やや見た目が野暮ったくなるが、実装としてはあまり規模が変わらないので、
+  やはりVueは良いということで。</p>
+<p><a href="https://jp.vuejs.org/v2/api/index.html#Vue-set">API-Vue.js</a></p>
     </article>
     
     
