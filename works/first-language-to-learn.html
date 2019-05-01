@@ -1,0 +1,341 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+  <?xml version="1.0" encoding="utf-8"?>
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+  <head>
+    <title>guntamania</title>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="generator" content="ruby template engine" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="/css/sitemap.css"
+          type="text/css"/>
+    <script type="text/javascript"
+	    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" 
+            src="/js/index.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107284492-2"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-107284492-2');
+    </script> 
+    
+      <script type="text/javascript" src="https://s.hatena.ne.jp/js/HatenaStar.js"></script>
+      <script type="text/javascript">
+       Hatena.Star.Token = 'de588734a2b0daf8d8413b7d14368db576d53567';
+       Hatena.Star.SiteConfig = {
+	   entryNodes: {
+	       'article': {
+		   uri: 'div#url',
+		   title: 'h2',
+		   container: 'h2'
+	       }
+	   }
+       };
+      </script>
+    
+  </head>
+  
+  <body>
+    <HEADER>
+      <H1 class="title"> <a class="title" href="/"> guntamania </a>
+	<nav>
+	  <ul>
+	    <li class="menu" id="menu-articles"><a href="/works">WORKS</a></li>
+	    <li class="menu"><a href="/diary">DIARY</a></li>
+	    <li class="menu" id="menu-aboutme"><a href="/about">ABOUT</a></li>
+	    
+	  </ul>
+	</nav>
+      </H1>
+    </HEADER>
+    <article id="main-article">
+      <div id="url" style="display:none;">https://medaka.github.io//works/first-language-to-learn.html</div>
+      <h2 id="0">令和元年版 初心者が学ぶべきプログラミング言語</h2>
+<span class="timestamp">[2019-05-01 Wed]</span>
+<p>さて、令和になったことだし、プログラミング言語でも学んでみっか！
+  でも何からはじめていいかわからん〜 &gt;_&lt;
+  というそこのアナタ！</p>
+<p>そんなアナタ向けに初心者が学ぶべきプログラミング言語をまとめてみる。</p>
+<h3>TL;DR</h3>
+<p>全部読み飛ばして、最後の
+  <a href="初心者が学ぶべき言語">初心者が学ぶべき言語</a> を見よう。</p>
+<h3>はじめに</h3>
+<p>元MS社員のスポンスキー氏が言うように、
+  プログラミング言語は住む世界によって様相が全く変わってしまう。</p>
+<p><a href="https://www.joelonsoftware.com/2002/05/06/five-worlds/">Five Worlds | Joel on Software</a></p>
+<p>そのため、各分野の問題を解決するために
+  いろいろな言語が生み出され、今のような状況になっている。</p>
+<p>なので、一旦世界別に使われている言語をみてから、
+  初心者が学ぶべき言語をまとめよう。</p>
+<h3>Web</h3>
+<p>Webエンジニアは、比較的求人も多い上に
+  教育のためのマテリアルも揃っているので、
+  目指すにはハードルが程よく低く、人気があるのではないかと思う。</p>
+<p>で、どんな技術を身につければいいかというと、
+  以下のレポジトリを見ると全てわかってしまう（まるなげ）。</p>
+<p><a href="https://github.com/kamranahmedse/developer-roadmap">developer-roadmap | github</a></p>
+<p>あえて詳細に書くなら以下のような具合になるだろうか。</p>
+<h4>フロントエンド</h4>
+<p>ざっくりいうと、Webブラウザの見栄えを整える技術分野だ。
+  言語としては、以下のふたつだ。</p>
+<ul>
+  <li>JavaScript</li>
+  <li>HTML</li>
+</ul>
+<p>しかし、近年、フロントエンドも高度に複雑化しており、
+  学習する内容は加速度的に増えつつある。
+  <a href="https://www.megamouth.info/entry/2017/09/12/232939">このようなジョークも</a>笑えなくなってくる。</p>
+<h4>バックエンド</h4>
+<p>Webのサーバ側を支える技術分野だ。
+  バックエンドは実に様々な言語で構成される。
+  単純にWebサーバで動作するWebアプリという意味では、</p>
+<ul>
+  <li>Node.js (JavaScript)</li>
+  <li>Ruby on Rails (Ruby)</li>
+  <li>Django (Python)</li>
+  <li>Spring boot (Java)</li>
+  <li>Laravel (PHP)</li>
+  <li>C# (.Net Core)</li>
+  <li>Phoenix (Elixir)</li>
+</ul>
+<p>などが使われる。</p>
+<p>モダンな現場ではAWSの <code>Lambda</code> や <code>Firebase Functions</code>
+  が使われているので、</p>
+<ul>
+  <li>Go</li>
+  <li>TypeScript</li>
+</ul>
+<p>あたりの言語を習得していくことになるだろう。</p>
+<h3>モバイル</h3>
+<p>モバイルは現状iOSとAndroidが大きなシェアを持っている。
+  基本的にこれらを開発することになるはずだ。</p>
+<h4>iOS</h4>
+<p>iOS、つまり iPhone/iPad のアプリを作るためには、</p>
+<ul>
+  <li>Swift</li>
+  <li>Objective-C</li>
+</ul>
+<p>の習得が必要である。</p>
+<p><code>Swift</code> は2014年に発表されたプログラミング言語で、モダンな作りをしている。
+  一方、 <code>Objective-C</code> は珍妙な言語であり、
+  今はあまり学ぶメリットはない。
+  ただ、古（いにしえ）のプロジェクトを担当する場合には必要になってくる
+  だろう。</p>
+<h4>Android</h4>
+<p>Androidアプリを作るには、以下のような言語が必要である。</p>
+<ul>
+  <li>Kotlin</li>
+</ul>
+<p>ｰ Java</p>
+<p><code>Kotlin</code> はモダンなJVM言語である。
+  モダンな現場だと <code>Kotlin</code> が採用されていることが多い。
+  一方 <code>Java</code> も現役で使われる言語だ。
+  また学習しておくと、他のWebやデスクトップのプロジェクトでも
+  知識が使い回せるため、一旦勉強してもいいかもしれない。
+  ある程度のキャリアを積むと、誰もが一度は通るプログラミング
+  言語である。</p>
+<h4>クロスプラットフォーム</h4>
+<p>以上に書いたのはネイティブアプリを実装するやりかただ。
+  そのため、各OS向けに対応したい場合、お互いに移植しなければならない。</p>
+<p>両プラットフォームに対応したアプリを作りたい場合は
+  以下のようなフレームワークを使用すれば可能だ。</p>
+<ul>
+  <li>Flutter (Dart)</li>
+  <li>React Native (JavaScript)</li>
+  <li>Xamarin (C#)</li>
+</ul>
+<p>これらはネイティブアプリと変わらないUXを提供すると
+  謳っている。
+  でもやっぱりやっぱり実際にはどうしてもこのフレームワーク臭さが目立ったり、
+  各OS向けになにか対応が必要だったりする。</p>
+<p>結局、本格的に市場に耐えるアプリを作るためには、
+  それぞれのプラットフォームで作るのが望ましい。</p>
+<h3>デスクトップアプリ</h3>
+<p>あまりデスクトップアプリが注目されなくなってきた。
+  以前は窓の杜やらVectorでフリーソフトを拾ってきたのにな..</p>
+<h4>Mac</h4>
+<p>macOSでアプリを作るのに必要なものや手順は、iOSとあまり変わらない。
+  近々いろいろ統一されるようなので、さらに差異はなくなっていくだろう。
+  したがって言語は</p>
+<ul>
+  <li>Swift</li>
+  <li>Objective-C</li>
+</ul>
+<p>となる。</p>
+<h4>Windows</h4>
+<p>Windowsアプリを作る方法は多岐にわたる。
+  サードパーティからもいろいろ開発環境が提供されているからだ。
+  あまりに多いので <a href="https://qiita.com/yosgspec/items/810843f863075d33a093">ここ</a> を参照しました。</p>
+<p>王道としては、まずはVisualStudioを手に入れるところからだろう。</p>
+<ul>
+  <li>WindowsForms (VB.net, C#)</li>
+  <li>WPF (VB.net, C#)</li>
+  <li>USP (VB.net, C#)</li>
+</ul>
+<p>入門しやすいのは <code>WinsowsForms</code> だ。
+  GUIでポチポチしながらプログラミングできる。
+  ある程度なれた人なら <code>WPF</code> あたりを選択するといいかもしれない。
+  言語は <code>F#</code> なんかも対応してた気がする。</p>
+<p>これらの選択肢は入門しやすいわりに、自分が何をしているのか見失いやすい。
+  それがVisualStudioらしさ。</p>
+<p>他にも手段はあって、</p>
+<ul>
+  <li>HTA (JScript)</li>
+  <li>HSP (HSP)　</li>
+  <li>Excel VBA (VBA)</li>
+</ul>
+<p>あたりか。
+  <code>HTA</code> はJScript（JavaScriptに酷似したもの）とHTMLの組み合わせなので、
+  Webを少しかじっていると入門が楽。
+  ただ、 <code>JScript</code> は昔IEに入ってたJavaScriptの実行環境とほぼ同じで、
+  モダンな構文はほとんど動かない。あとググりにくい。</p>
+<p><code>HSP</code> は僕が小学生のころにいじっていたもの。
+  とにかく環境構築が楽。
+  小学生でも学習できる反面、
+  大人が勉強しようとするとものたりない。</p>
+<h4>クロスプラットフォーム</h4>
+<p>モバイルアプリと異なり、ことGUIアプリにおいては、
+  クロスプラットフォームで開発されるケースは一般的になってきている。</p>
+<ul>
+  <li>Electoron (JavaScript)</li>
+  <li>Java</li>
+</ul>
+<p><code>Electron</code> は最近人気のアプリでよくみかける。
+  AtomやSkypeなんかも <code>Electoron</code> らしい。</p>
+<p>Java製のアプリといえば、Eclipseなんかがそうだったとおもう。
+  ただ、GUIフレームワークの選択がなかなか渋かったと思うんだけど
+  （なかなか良いUIを提供してくれるフレームワークがない）、
+  最近は <code>JavaFX</code> というのが標準であるらしく、
+  一応解決をみることができるようだ。</p>
+<p><code>Java</code> のメリットはいろいろな環境で動くこと。
+  マイナーなOSにも対応している。</p>
+<h3>ゲーム</h3>
+<p>ゲームを作る場合は、何かしらのミドルウェアを頼りにすることになるだろう。</p>
+<ul>
+  <li>Unity (C#, Javascript, Boo)</li>
+  <li>Unreal Engine (C++, UnrealScrpipt)</li>
+  <li>Cocos2d-x (C++, Lua, JavaScript)</li>
+</ul>
+<p>このあたりが定番だ。
+  ただ、そこまでのハイエンドゲームでない場合は、
+  自前で各プラットフォームにあった言語で作ることになる。</p>
+<h3>機械学習</h3>
+<p>最近は <code>機械学習</code> のキーワードからプログラミングに興味をもつ人が
+  多いと思う。
+  今から機械学習を始めるのなら、言語は以下の2択だろう。</p>
+<ul>
+  <li>Python</li>
+  <li>GO</li>
+</ul>
+<p>理由は、単純に資料やライブラリの数が十分にあるから。
+  実際にはわりとどの言語でも開発できたりする。</p>
+<h3>初心者が学ぶべき言語</h3>
+<p>こうしてまとめると、
+  とりあえず学んどいて損はない言語は以下のような感じか。</p>
+<ul>
+  <li>C言語</li>
+  <li>JavaScript</li>
+  <li>Java</li>
+  <li>Python</li>
+  <li>Go</li>
+</ul>
+<h4>C言語</h4>
+<p>上に挙げた言語一覧では一切登場しなかった言語。
+  にもかかわらず、ここに挙げざるを得なかったのは、
+  やはりその確固たる地位によるものだ。</p>
+<p>C言語はプログラミング言語の中でもかなり機械語に近い分類だ。
+  そのため、コーディングの際には常に危険が生じ、
+  また可読性・メンテナンス性にもすぐれないため、
+  現在、特にアプリケーションプログラミングにおいては、あまり用いられない。</p>
+<p>とはいえ、この言語はそのプリミティブさゆえにコンピュータの動作を
+  知っておかないとマトモにコーディングできない。
+  なので、C言語を学習するということは、
+  コンピュータ全体を学習するということになる。
+  腰を据えて学習する場合、一番良い選択肢になるだろう。</p>
+<h4>JavaScript</h4>
+<p>なにかと登場回数が多い言語。
+  最近はAltJSという改良言語を使うことも多い。
+  特に <code>TypeScript</code> は人気なので、頭に入れておいてもいいかもしれない。</p>
+<p>ただし、深掘りすると結構ハマる言語である。
+  ユルい見た目をしているが、 <code>プロトタイプベース</code>
+  という一風変わったパラダイムを採用しているし、
+  <code>function</code> 宣言が並ぶと、 <code>Lisp</code> を彷彿とさせる見た目になってくる。</p>
+<p>そのせいか、熟練プログラマの書いたコードを初心者プログラマは
+  1行たりとも読めないという事態が往々にして発生する。</p>
+<p>なので、軽々に初学者向けにおすすめできない言語であるものの、
+  ブラウザさえあれば開発が始められるため、
+  ついついここから始めてしまう言語である。</p>
+<h4>Java</h4>
+<p>オブジェクト指向言語を学びたい場合はベストな選択肢だと思う。
+  特にいろいろなプラットフォームに対応するので、
+  これさえ学んでおけば、モバイル、組込み、Web、デスクトップ
+  全て対応できるプログラマーになれる。</p>
+<p>が、最初の障壁が結構難しい。
+  HelloWorldを出すのも一苦労だ。</p>
+<p>そういう意味では手をだしづらいかもしれない。</p>
+<h4>Python</h4>
+<p>とにかく初学者に優しい言語。</p>
+<p>GUIアプリでは登場しないヤツ。</p>
+<p>GUIアプリは何かと煩雑になることが多いので、
+  Pythonで作るアプリは単純になりがちってだけかもしれない。</p>
+<p>初学者が書いても熟練が書いても、あまり品質に差異のないコードになるよう
+  言語が予め設計されている。</p>
+<h4>GO</h4>
+<p>Google謹製。
+  メリットはそれ。</p>
+<p>Pythonと同じく、初心者にも優しい言語設計となっている。
+  Googleが提供するライブラリも多く、
+  機械学習を組む場合には重宝する。</p>
+<h3>まとめ</h3>
+<p>なんか高レイヤーに偏ってしまった感がある。
+  ゲームのところでOpenGLにも言及すべきが迷ったが、やめておいた。
+  その他にも低レイヤーの話はあんまりしていないな。</p>
+<p>あとはネットワーク関連か。
+  DevOpsとかだと、シェルとかymlとか必要になるけど、
+  それってもはやプログラミング言語なのか..？</p>
+<p>とはいえ、初心者向けということであれば概ね網羅できてるんでないかと思う。
+  いきなりプログラミング教室で Rails 学ぶのもいいんだけど、
+  一旦俯瞰してから入門するのもいいのではないかと思うのだ。</p>
+    </article>
+    
+    
+      <div class="disqus-wrapper">
+	<div id="disqus_thread"></div>
+      </div>
+	<script>
+     
+
+     /**
+      *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
+      *  LEARN WHY DEFINING THESE VARIABLES IS IMPORTANT: https://disqus.com/admin/universalcode/#configuration-variables*/
+
+     var disqus_config = function () {
+	 this.page.url = "https://medaka.github.io//works/first-language-to-learn.html";  // Replace PAGE_URL with your page's canonical URL variable
+ 	 this.page.identifier = "https://medaka.github.io//works/first-language-to-learn.html"; // Replace PAGE_IDENTIFIER with your page's unique identifier variable
+     };
+
+     (function() { // DON'T EDIT BELOW THIS LINE
+	 var d = document, s = d.createElement('script');
+	 s.src = 'https://https-medaka-github-io.disqus.com/embed.js';
+	 s.setAttribute('data-timestamp', +new Date());
+	 (d.head || d.body).appendChild(s);
+     })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    
+    <footer>
+      <nav class="footer">
+	<p class="copyright">Copyright 2018</p>
+      </nav>
+    </footer>
+  </body>
+</html>
+
