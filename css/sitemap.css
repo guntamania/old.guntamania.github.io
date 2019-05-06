@@ -170,6 +170,10 @@ li.menu:before {
     content: none;
 }
 
+li.diary-list:before {
+    content: none;
+}
+
 ul li.menu {
     list-style-type: none;
     font-family: serif;

@@ -58,6 +58,41 @@
 <p>あと、どうでもいいけど、emacs の js2-mode がES6に対応してなくて、
   アロー演算子とかで怒られてしまう。
   ググってもみんなあまり困ってないようなんだけど、なんでだろう..</p>
+<h2 id="1">ひきつづき Cloud Functions for Firebase</h2>
+<span class="timestamp">[2019-05-07 Tue]</span>
+<p>と思ったら、=firebse serve= というコマンドがあった。
+  無知はいかんな。</p>
+<pre class="src" lang="bash">
+⟩ firebase serve -h
+
+Options:
+  -p, --port &lt;port&gt;   the port on which to listen (default: 5000) (default: 5000)
+  -o, --host &lt;host&gt;   the host on which to listen (default: localhost) (default: &quot;localhost&quot;)
+  --only &lt;targets&gt;    only serve specified targets (valid targets are: functions, hosting, database, firestore)
+  --except &lt;targets&gt;  serve all except specified targets (valid targets are: functions, hosting)
+  -h, --help          output usage information
+</pre>
+<p>と出たので、普通にデバッグできそうなかんじだ。
+  うまくいけば Realtime Database なんかもできそう。
+  ところが、手元で試してみたところ、
+  途中でハマってしまいうまく動かすことができなかった‥
+  残念だ。</p>
+<p>で、連休中こいつをいじっていた。
+  最終的に Firebase Hosting から Web API
+  を呼び出し、SPA に仕立てるつもりだった。
+  しかし、Firebase の Sparkプラン（無料プラン）では
+  外部接続に制限があるようだ。</p>
+<p><a href="https://firebase.google.com/pricing/?hl%3Dja">料金 - Firebase</a></p>
+<blockquote>
+  <p>アウトバウンドネットワーキング Google services only</p>
+</blockquote>
+<p>このアウトバウンドネットワーキングってのが具体的に何を指すのか
+  よくわからないんだけど、外部通信全般を指すのだとしたら、Web API
+  を組むのもままらなくなる。
+  でも、Firebase Hosting も Google services だと思うんだけどなあ。</p>
+<p>よくわからんので、製作中のアプリの処理は、Functionsではなく、
+  各クライアント側に実装することにした。
+  うーん、せっかく面白いおもちゃを手に入れたと思ったのに、くやしい。</p>
     </article>
     
     
