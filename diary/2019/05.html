@@ -60,7 +60,7 @@
   ググってもみんなあまり困ってないようなんだけど、なんでだろう..</p>
 <h2 id="1">ひきつづき Cloud Functions for Firebase</h2>
 <span class="timestamp">[2019-05-07 Tue]</span>
-<p>と思ったら、=firebse serve= というコマンドがあった。
+<p>と思ったら、 <code>firebse serve</code> というコマンドがあった。
   無知はいかんな。</p>
 <pre class="src" lang="bash">
 ⟩ firebase serve -h
@@ -93,6 +93,22 @@ Options:
 <p>よくわからんので、製作中のアプリの処理は、Functionsではなく、
   各クライアント側に実装することにした。
   うーん、せっかく面白いおもちゃを手に入れたと思ったのに、くやしい。</p>
+<h2 id="2">org-mode の設定がおかしくなる</h2>
+<span class="timestamp">[2019-05-09 Thu]</span>
+<p>emacs の org-mode を使っていたら、</p>
+<pre class="src">
+Symbol's value as variable is void
+</pre>
+<p>と出るようになった。
+  設定の読み込み順序がおかしいようだ。</p>
+<pre class="src">
+(with-eval-after-load 'org
+ ;; here goes your Org config
+)
+</pre>
+<p>として、コメント部分に設定を書いていけば良い。</p>
+<p>他のパッケージでも使えるマクロのようだ。</p>
+<p><a href="https://qiita.com/syohex/items/565efc60f73ff0f50e83">init.elから削除できそうな項目 | Qiita</a></p>
     </article>
     
     
