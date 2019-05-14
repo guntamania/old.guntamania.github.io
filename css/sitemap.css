@@ -213,6 +213,7 @@ pre.src {
     margin: 10px 2em;
     font-size: 0.8em;
     font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,Courier,monospace;
+    overflow-x: auto;
 }
 
 blockquote {

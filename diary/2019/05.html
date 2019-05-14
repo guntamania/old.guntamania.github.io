@@ -101,13 +101,14 @@ Symbol's value as variable is void
 </pre>
 <p>と出るようになった。
   設定の読み込み順序がおかしいようだ。</p>
-<pre class="src">
+<pre class="src" lang="lisp">
 (with-eval-after-load 'org
  ;; here goes your Org config
 )
 </pre>
 <p>として、コメント部分に設定を書いていけば良い。</p>
-<p>他のパッケージでも使えるマクロのようだ。</p>
+<p>他のパッケージでも使えるマクロのようだ。
+  わざわざ <code>require</code> せんでもいいらしい。</p>
 <p><a href="https://qiita.com/syohex/items/565efc60f73ff0f50e83">init.elから削除できそうな項目 | Qiita</a></p>
     </article>
     
