@@ -26,10 +26,10 @@ body {
 }
 @media screen and (min-width:480px) {
     /*　画面サイズ 480px以上から適用　*/
-    article {width: 68%; min-width: 620px}
-    header  {width: 68%; min-width: 620px}
-    footer nav{width: 68%; min-width: 620px}
-    .disqus-wrapper{width: 68%; min-width: 620px}
+    article {width: 720px; min-width: 620px}
+    header  {width: 720px; min-width: 620px}
+    footer nav{width: 720px; min-width: 620px}
+    .disqus-wrapper{width: 720px; min-width: 620px}
 } 
 
 article {
