@@ -147,30 +147,30 @@ Time.zone.now.ago(10.days).beginning_of_day
   ちなみに0.14.xってのもあったが、こちらはエラーをはいてだめだった。</p>
 <p>順番は前後しちゃうんだけど、以下も。</p>
 <pre class="src" lang="xml">
-<span style="color:#070;font-weight:bold">&lt;configuration&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;minimizeJar&gt;</span>false<span style="color:#070;font-weight:bold">&lt;/minimizeJar&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;filters&gt;</span>
-        <span style="color:#070;font-weight:bold">&lt;filter&gt;</span>
-            <span style="color:#777">&lt;!-- exclude signatures, the bundling process breaks them for some reason --&gt;</span>
-            <span style="color:#070;font-weight:bold">&lt;artifact&gt;</span>*:*<span style="color:#070;font-weight:bold">&lt;/artifact&gt;</span>
-            <span style="color:#070;font-weight:bold">&lt;excludes&gt;</span>
-                <span style="color:#070;font-weight:bold">&lt;exclude&gt;</span>META-INF/*.SF<span style="color:#070;font-weight:bold">&lt;/exclude&gt;</span>
-                <span style="color:#070;font-weight:bold">&lt;exclude&gt;</span>META-INF/*.DSA<span style="color:#070;font-weight:bold">&lt;/exclude&gt;</span>
-                <span style="color:#070;font-weight:bold">&lt;exclude&gt;</span>META-INF/*.RSA<span style="color:#070;font-weight:bold">&lt;/exclude&gt;</span>
-            <span style="color:#070;font-weight:bold">&lt;/excludes&gt;</span>
-        <span style="color:#070;font-weight:bold">&lt;/filter&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;/filters&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;shadedArtifactAttached&gt;</span>true<span style="color:#070;font-weight:bold">&lt;/shadedArtifactAttached&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;shadedClassifierName&gt;</span>bundled<span style="color:#070;font-weight:bold">&lt;/shadedClassifierName&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;transformers&gt;</span>
-        <span style="color:#070;font-weight:bold">&lt;transformer</span> <span style="color:#b48">implementation</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">org.apache.maven.plugins.shade.resource.ManifestResourceTransformer</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-+           <span style="color:#070;font-weight:bold">&lt;mainClass&gt;</span>wallettemplate.Main<span style="color:#070;font-weight:bold">&lt;/mainClass&gt;</span>
--           <span style="color:#070;font-weight:bold">&lt;mainClass&gt;</span>${project.artifactId}.Main<span style="color:#070;font-weight:bold">&lt;/mainClass&gt;</span>
-        <span style="color:#070;font-weight:bold">&lt;/transformer&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;/transformers&gt;</span>
-+   <span style="color:#070;font-weight:bold">&lt;outputFile&gt;</span>target/wallettemplate-shaded.jar<span style="color:#070;font-weight:bold">&lt;/outputFile&gt;</span>
--   <span style="color:#070;font-weight:bold">&lt;outputFile&gt;</span>target/${project.artifactId}-shaded.jar<span style="color:#070;font-weight:bold">&lt;/outputFile&gt;</span>
-<span style="color:#070;font-weight:bold">&lt;/configuration&gt;</span>
+&lt;configuration&gt;
+    &lt;minimizeJar&gt;false&lt;/minimizeJar&gt;
+    &lt;filters&gt;
+        &lt;filter&gt;
+            &lt;!-- exclude signatures, the bundling process breaks them for some reason --&gt;
+            &lt;artifact&gt;*:*&lt;/artifact&gt;
+            &lt;excludes&gt;
+                &lt;exclude&gt;META-INF/*.SF&lt;/exclude&gt;
+                &lt;exclude&gt;META-INF/*.DSA&lt;/exclude&gt;
+                &lt;exclude&gt;META-INF/*.RSA&lt;/exclude&gt;
+            &lt;/excludes&gt;
+        &lt;/filter&gt;
+    &lt;/filters&gt;
+    &lt;shadedArtifactAttached&gt;true&lt;/shadedArtifactAttached&gt;
+    &lt;shadedClassifierName&gt;bundled&lt;/shadedClassifierName&gt;
+    &lt;transformers&gt;
+        &lt;transformer implementation=&quot;org.apache.maven.plugins.shade.resource.ManifestResourceTransformer&quot;&gt;
++           &lt;mainClass&gt;wallettemplate.Main&lt;/mainClass&gt;
+-           &lt;mainClass&gt;${project.artifactId}.Main&lt;/mainClass&gt;
+        &lt;/transformer&gt;
+    &lt;/transformers&gt;
++   &lt;outputFile&gt;target/wallettemplate-shaded.jar&lt;/outputFile&gt;
+-   &lt;outputFile&gt;target/${project.artifactId}-shaded.jar&lt;/outputFile&gt;
+&lt;/configuration&gt;
 </pre>
 <p>ここまで違うとコントリビュートしたほうがいいのかな..
   まあ、でも3年前が最終更新だから仕方ないね。</p>

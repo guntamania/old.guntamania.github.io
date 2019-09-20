@@ -125,7 +125,7 @@ PS C:\Users\me&gt; choco install nodejs
 Do you want to continue?([Y]es/[N]o): Y
 </pre>
 <pre class="src">
-パス 'C:\ProgramData\chocolatey\lib-bad' へのアクセスが拒否されました。
+パス &#39;C:\ProgramData\chocolatey\lib-bad&#39; へのアクセスが拒否されました。
 </pre>
 <p>と出る場合は「管理者で実行」しよう</p>
 <p><a href="./data/vue/admin.png"><img src="data/vue/admin.png" alt="data/vue/admin.png" /></a></p>
@@ -228,18 +228,18 @@ PS C:\Users\me\onsen-project&gt; npm install onsenui vue-onsenui --save-dev
 </pre>
 <p>そして以下のコードを <code>src/main.js</code> に貼り付ける。</p>
 <pre class="src" lang="diff">
-<span style="color:#777" class="line">// The Vue build version to load with the `import` command</span>
-<span style="color:#777" class="line">// (runtime-only or standalone) has been set in webpack.base.conf with an alias.</span>
-<span style="color:#777" class="line">import Vue from 'vue'</span>
-<span style="color:#777" class="line">import App from './App'</span>
+// The Vue build version to load with the `import` command
+// (runtime-only or standalone) has been set in webpack.base.conf with an alias.
+import Vue from &#39;vue&#39;
+import App from &#39;./App&#39;
 
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span> // Webpack CSS import</span>
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span> import 'onsenui/css/onsenui.css';</span>
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span> import 'onsenui/css/onsen-css-components.css';</span>
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span> // JS import</span>
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span> import VueOnsen from 'vue-onsenui'; // This already imports 'onsenui'</span>
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span> Vue.use(VueOnsen);</span>
-<span style="color:#777" class="line">import router from './router'</span>
++ // Webpack CSS import
++ import &#39;onsenui/css/onsenui.css&#39;;
++ import &#39;onsenui/css/onsen-css-components.css&#39;;
++ // JS import
++ import VueOnsen from &#39;vue-onsenui&#39;; // This already imports &#39;onsenui&#39;
++ Vue.use(VueOnsen);
+import router from &#39;./router&#39;
 </pre>
 <p>以上でvue.jsでOnsen UIの使用が可能となる。</p>
 <h3>プロトタイピングする</h3>
@@ -256,63 +256,63 @@ PS C:\Users\me\onsen-project&gt; npm install onsenui vue-onsenui --save-dev
 <p>App.vueを以下のように大改造する。
   中身についてはおいおいわかっていけばいいと思う。。</p>
 <pre class="src" lang="html">
-<span style="color:#070;font-weight:bold">&lt;template&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;div</span> <span style="color:#b48">id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">app</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;v-ons-toolbar&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;div</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">left</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-        <span style="color:#070;font-weight:bold">&lt;v-ons-toolbar-button</span> <span style="color:#F00;background-color:#FAA">@</span><span style="color:#b48">click</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">openSide = !openSide</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-          <span style="color:#070;font-weight:bold">&lt;v-ons-icon</span> <span style="color:#b48">icon</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ion-navicon, material:md-menu</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span><span style="color:#070;font-weight:bold">&lt;/v-ons-icon&gt;</span>
-        <span style="color:#070;font-weight:bold">&lt;/v-ons-toolbar-button&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;/div&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;div</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">center</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>vue-project<span style="color:#070;font-weight:bold">&lt;/div&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;/v-ons-toolbar&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;v-ons-splitter</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">content</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;v-ons-splitter-side</span>
-        <span style="color:#b48">swipeable</span> <span style="color:#b48">width</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">150px</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">collapse</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">side</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">left</span><span style="color:#710">&quot;</span></span>
-        <span style="color:#b48">:open.sync</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">openSide</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-        <span style="color:#070;font-weight:bold">&lt;v-ons-page&gt;</span>
-          <span style="color:#070;font-weight:bold">&lt;v-ons-list&gt;</span>
-            <span style="color:#070;font-weight:bold">&lt;v-ons-list-item</span> <span style="color:#b48">v-for</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">page in pages</span><span style="color:#710">&quot;</span></span>
-              <span style="color:#b48">tappable</span> <span style="color:#b48">modifier</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">chevron</span><span style="color:#710">&quot;</span></span>
-              <span style="color:#F00;background-color:#FAA">@</span><span style="color:#b48">click</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">openSide = false</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+&lt;template&gt;
+  &lt;div id=&quot;app&quot;&gt;
+    &lt;v-ons-toolbar&gt;
+      &lt;div class=&quot;left&quot;&gt;
+        &lt;v-ons-toolbar-button @click=&quot;openSide = !openSide&quot;&gt;
+          &lt;v-ons-icon icon=&quot;ion-navicon, material:md-menu&quot;&gt;&lt;/v-ons-icon&gt;
+        &lt;/v-ons-toolbar-button&gt;
+      &lt;/div&gt;
+      &lt;div class=&quot;center&quot;&gt;vue-project&lt;/div&gt;
+    &lt;/v-ons-toolbar&gt;
+    &lt;v-ons-splitter class=&quot;content&quot;&gt;
+      &lt;v-ons-splitter-side
+        swipeable width=&quot;150px&quot; collapse=&quot;&quot; side=&quot;left&quot;
+        :open.sync=&quot;openSide&quot;&gt;
+        &lt;v-ons-page&gt;
+          &lt;v-ons-list&gt;
+            &lt;v-ons-list-item v-for=&quot;page in pages&quot;
+              tappable modifier=&quot;chevron&quot;
+              @click=&quot;openSide = false&quot;&gt;
               {{page}}
-            <span style="color:#070;font-weight:bold">&lt;/v-ons-list-item&gt;</span>
-          <span style="color:#070;font-weight:bold">&lt;/v-ons-list&gt;</span>
-        <span style="color:#070;font-weight:bold">&lt;/v-ons-page&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;/v-ons-splitter-side&gt;</span>
+            &lt;/v-ons-list-item&gt;
+          &lt;/v-ons-list&gt;
+        &lt;/v-ons-page&gt;
+      &lt;/v-ons-splitter-side&gt;
 
-      <span style="color:#070;font-weight:bold">&lt;v-ons-splitter-content&gt;</span>
-        <span style="color:#070;font-weight:bold">&lt;router-view</span> <span style="color:#070;font-weight:bold">/&gt;</span>
-      <span style="color:#070;font-weight:bold">&lt;/v-ons-splitter-content&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;/v-ons-splitter&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;/div&gt;</span>
-<span style="color:#070;font-weight:bold">&lt;/template&gt;</span>
+      &lt;v-ons-splitter-content&gt;
+        &lt;router-view /&gt;
+      &lt;/v-ons-splitter-content&gt;
+    &lt;/v-ons-splitter&gt;
+  &lt;/div&gt;
+&lt;/template&gt;
 
-<span style="color:#070;font-weight:bold">&lt;script&gt;</span>
-<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">default</span> {
-  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">App</span><span style="color:#710">'</span></span>,
-  <span style="color:#606">data</span>: () =&gt; {
-    <span style="color:#080;font-weight:bold">return</span>({
-      <span style="color:#606">openSide</span>: <span style="color:#069">false</span>,
-      <span style="color:#606">pages</span>: [<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">menu1</span><span style="color:#710">&quot;</span></span>, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">menu2</span><span style="color:#710">&quot;</span></span>]
+&lt;script&gt;
+export default {
+  name: &#39;App&#39;,
+  data: () =&gt; {
+    return({
+      openSide: false,
+      pages: [&quot;menu1&quot;, &quot;menu2&quot;]
     });
   }
-}</span>
-<span style="color:#070;font-weight:bold">&lt;/script&gt;</span>
-
-<span style="color:#070;font-weight:bold">&lt;style&gt;</span>
-<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="color:#33D;font-weight:bold">#app</span> {
-  <span style="color:#606">font-family</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Avenir</span><span style="color:#710">'</span></span>, <span style="color:#088">Helvetica</span>, <span style="color:#088">Arial</span>, <span style="color:#088">sans-serif</span>;
-  <span style="color:#606">-webkit-font-smoothing</span>: <span style="color:#088">antialiased</span>;
-  <span style="color:#606">-moz-osx-font-smoothing</span>: <span style="color:#088">grayscale</span>;
-  <span style="color:#606">text-align</span>: <span style="color:#088">center</span>;
-  <span style="color:#606">color</span>: <span style="color:#0A0">#2c3e50</span>;
-  <span style="color:#606">margin-top</span>: <span style="color:#60E">60px</span>;
 }
-<span style="color:#B06;font-weight:bold">.content</span> {
-  <span style="color:#606">margin-top</span>: <span style="color:#60E">58px</span>;
-}</span>
-<span style="color:#070;font-weight:bold">&lt;/style&gt;</span>
+&lt;/script&gt;
+
+&lt;style&gt;
+#app {
+  font-family: &#39;Avenir&#39;, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  margin-top: 60px;
+}
+.content {
+  margin-top: 58px;
+}
+&lt;/style&gt;
 </pre>
 <p>おいおいとはいえ、
   簡単にvueファイルの説明をしないといけない。
@@ -349,54 +349,54 @@ PS C:\Users\me\vue-project&gt; npm run dev
 <p><code>components/Page1.vue</code> を新規作成し、以下をとりあえずを入力し、
   保存する。</p>
 <pre class="src" lang="html">
-<span style="color:#070;font-weight:bold">&lt;template&gt;</span>
-<span style="color:#070;font-weight:bold">&lt;div&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;ons-page&gt;</span>
+&lt;template&gt;
+&lt;div&gt;
+  &lt;ons-page&gt;
     aaa
-  <span style="color:#070;font-weight:bold">&lt;/ons-page&gt;</span>
-<span style="color:#070;font-weight:bold">&lt;/div&gt;</span>
-<span style="color:#070;font-weight:bold">&lt;/template&gt;</span>
-<span style="color:#070;font-weight:bold">&lt;script&gt;</span>
-<span style="background-color:hsla(0,0%,0%,0.07);color:black"><span style="color:#080;font-weight:bold">export</span> <span style="color:#080;font-weight:bold">default</span> {
-  <span style="color:#606">name</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">'</span><span style="color:#D20">Page1</span><span style="color:#710">'</span></span>,
+  &lt;/ons-page&gt;
+&lt;/div&gt;
+&lt;/template&gt;
+&lt;script&gt;
+export default {
+  name: &#39;Page1&#39;,
   data () {
-    <span style="color:#080;font-weight:bold">return</span> {
+    return {
     }
   }
-}</span>
-<span style="color:#070;font-weight:bold">&lt;/script&gt;</span>
+}
+&lt;/script&gt;
 
-<span style="color:#777">&lt;!-- Add &quot;scoped&quot; attribute to limit CSS to this component only --&gt;</span>
-<span style="color:#070;font-weight:bold">&lt;style</span> <span style="color:#b48">scoped</span><span style="color:#070;font-weight:bold">&gt;</span>
+&lt;!-- Add &quot;scoped&quot; attribute to limit CSS to this component only --&gt;
+&lt;style scoped&gt;
 
-<span style="color:#070;font-weight:bold">&lt;/style&gt;</span>
+&lt;/style&gt;
 </pre>
 <p>aaa と表示するだけのページだ。
   あとはvueのひな形が入力されている。</p>
 <p>そして <code>router/index.js</code> に以下を追加する。
   これにより、URLと先ほど追加したページが紐づけされるのだ。</p>
 <pre class="src" lang="diff">
-<span style="color:#777" class="line">import Vue from 'vue'</span>
-<span style="color:#777" class="line">import Router from 'vue-router'</span>
-<span style="color:#777" class="line">import HelloWorld from '@/components/HelloWorld'</span>
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span> import Page1 from '@/components/Page1'</span>
+import Vue from &#39;vue&#39;
+import Router from &#39;vue-router&#39;
+import HelloWorld from &#39;@/components/HelloWorld&#39;
++ import Page1 from &#39;@/components/Page1&#39;
 
-<span style="color:#777" class="line">Vue.use(Router)</span>
+Vue.use(Router)
 
-<span style="color:#777" class="line">export default new Router({</span>
+export default new Router({
   routes: [
     {
-      path: '/',
-      name: 'HelloWorld',
+      path: &#39;/&#39;,
+      name: &#39;HelloWorld&#39;,
       component: HelloWorld
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>   },</span>
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>   {</span>
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>     path: '/page1',</span>
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>     name: 'Page1',</span>
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>     component: Page1</span>
++   },
++   {
++     path: &#39;/page1&#39;,
++     name: &#39;Page1&#39;,
++     component: Page1
     }
   ]
-<span style="color:#777" class="line">})</span>
+})
 </pre>
 <p>ドロワにメニューを追加するため、
   <code>App.vue</code> を変更しよう。
@@ -410,8 +410,8 @@ PS C:\Users\me\vue-project&gt; npm run dev
           &lt;v-ons-list&gt;
             &lt;v-ons-list-item v-for=&quot;page in pages&quot;
               tappable modifier=&quot;chevron&quot;
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>             @click=&quot;openSide = false; $router.push(page.path)&quot;&gt;</span>
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>             {{page.label}}</span>
++             @click=&quot;openSide = false; $router.push(page.path)&quot;&gt;
++             {{page.label}}
             &lt;/v-ons-list-item&gt;
           &lt;/v-ons-list&gt;
         &lt;/v-ons-page&gt;
@@ -421,13 +421,13 @@ PS C:\Users\me\vue-project&gt; npm run dev
         &lt;router-view /&gt;
       &lt;/v-ons-splitter-content&gt;
     &lt;/v-ons-splitter&gt;
-<span style="color:#777" class="line">        :</span>
+	:
     data: () =&gt; {
     return({
       openSide: false,
       pages: [
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>       {label: &quot;Top&quot;, path: &quot;/&quot;},</span>
-<span style="background:hsla(120,100%,50%,0.12)" class="line"><span style="color:#0c0;background:transparent;font-weight:bold">+</span>       {label: &quot;page1&quot;, path: &quot;/page1&quot;}</span>
++       {label: &quot;Top&quot;, path: &quot;/&quot;},
++       {label: &quot;page1&quot;, path: &quot;/page1&quot;}
        ]
     });
 </pre>
@@ -439,11 +439,11 @@ PS C:\Users\me\vue-project&gt; npm run dev
   完成形の<a href="https://github.com/medaka/vue-project">ソースコード</a> を参照しながら見ていただきたい。</p>
 <p>Page1.vueのtemplateセクションに以下を追加する。</p>
 <pre class="src" lang="html">
-<span style="color:#070;font-weight:bold">&lt;v-ons-fab</span>
-  <span style="color:#b48">position</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">bottom right</span><span style="color:#710">&quot;</span></span>
-  <span style="color:#F00;background-color:#FAA">@</span><span style="color:#b48">click</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">show = true</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;v-ons-icon</span> <span style="color:#b48">icon</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">md-plus</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span><span style="color:#070;font-weight:bold">&lt;/v-ons-icon&gt;</span>
-<span style="color:#070;font-weight:bold">&lt;/v-ons-fab&gt;</span>
+&lt;v-ons-fab
+  position=&quot;bottom right&quot;
+  @click=&quot;show = true&quot;&gt;
+  &lt;v-ons-icon icon=&quot;md-plus&quot;&gt;&lt;/v-ons-icon&gt;
+&lt;/v-ons-fab&gt;
 </pre>
 <p>これでUIを追加できる。
   またクリック時の挙動として、 <code>show</code> を <code>true</code> にし、
@@ -451,8 +451,8 @@ PS C:\Users\me\vue-project&gt; npm run dev
   <code>show</code> をscriptセクションの中で宣言する。</p>
 <pre class="src" lang="js">
 data () {
-  <span style="color:#080;font-weight:bold">return</span> {
-    <span style="color:#606">show</span>: <span style="color:#069">false</span>
+  return {
+    show: false
   }
 },
 </pre>
@@ -462,22 +462,22 @@ data () {
 <p>次にポップアップモーダルを追加しよう。
   templateには以下を追加する。</p>
 <pre class="src" lang="html">
-<span style="color:#070;font-weight:bold">&lt;v-ons-alert-dialog</span> <span style="color:#b48">modifier</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">rowfooter</span><span style="color:#710">&quot;</span></span>
-                    <span style="color:#b48">:visible.sync</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">show</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;span</span> <span style="color:#b48">slot</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">title</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>入力画面<span style="color:#070;font-weight:bold">&lt;/span&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;div</span> <span style="color:#b48">class</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">center</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;v-ons-input</span> <span style="color:#b48">placeholder</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">ひとこと</span><span style="color:#710">&quot;</span></span> <span style="color:#b48">float</span>
-                 <span style="color:#b48">v-model</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">message</span><span style="color:#710">&quot;</span></span> <span style="color:#070;font-weight:bold">/&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;/div&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;template</span> <span style="color:#b48">slot</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">footer</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;v-ons-alert-dialog-button</span> <span style="color:#F00;background-color:#FAA">@</span><span style="color:#b48">click</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">show = false</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+&lt;v-ons-alert-dialog modifier=&quot;rowfooter&quot;
+                    :visible.sync=&quot;show&quot;&gt;
+  &lt;span slot=&quot;title&quot;&gt;入力画面&lt;/span&gt;
+  &lt;div class=&quot;center&quot;&gt;
+    &lt;v-ons-input placeholder=&quot;ひとこと&quot; float
+                 v-model=&quot;message&quot; /&gt;
+  &lt;/div&gt;
+  &lt;template slot=&quot;footer&quot;&gt;
+    &lt;v-ons-alert-dialog-button @click=&quot;show = false&quot;&gt;
       キャンセル
-    <span style="color:#070;font-weight:bold">&lt;/v-ons-alert-dialog-button&gt;</span>
-    <span style="color:#070;font-weight:bold">&lt;v-ons-alert-dialog-button</span> <span style="color:#F00;background-color:#FAA">@</span><span style="color:#b48">click</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">handleOk</span><span style="color:#710">&quot;</span></span><span style="color:#070;font-weight:bold">&gt;</span>
+    &lt;/v-ons-alert-dialog-button&gt;
+    &lt;v-ons-alert-dialog-button @click=&quot;handleOk&quot;&gt;
       追加
-    <span style="color:#070;font-weight:bold">&lt;/v-ons-alert-dialog-button&gt;</span>
-  <span style="color:#070;font-weight:bold">&lt;/template&gt;</span>
-<span style="color:#070;font-weight:bold">&lt;/v-ons-alert-dialog&gt;</span>
+    &lt;/v-ons-alert-dialog-button&gt;
+  &lt;/template&gt;
+&lt;/v-ons-alert-dialog&gt;
 </pre>
 <p>まず、　=:visible.sync= に <code>show</code> を設定することで、
   全体の表示・非表示を設定することができる。</p>
@@ -491,17 +491,17 @@ data () {
 <p>では、scriptセクションを見てみよう。</p>
 <pre class="src" lang="js">
 data () {
-  <span style="color:#080;font-weight:bold">return</span> {
-    <span style="color:#606">messages</span>: [],
-    <span style="color:#606">message</span>: <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>,
-    <span style="color:#606">show</span>: <span style="color:#069">false</span>
+  return {
+    messages: [],
+    message: &quot;&quot;,
+    show: false
   }
 },
-<span style="color:#606">methods</span>: {
+methods: {
   handleOk () {
-    <span style="color:#950">this</span>.messages.push(<span style="color:#950">this</span>.message);
-    <span style="color:#950">this</span>.message = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>;
-    <span style="color:#950">this</span>.show = <span style="color:#069">false</span>;
+    this.messages.push(this.message);
+    this.message = &quot;&quot;;
+    this.show = false;
   }
 }
 </pre>
