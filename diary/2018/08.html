@@ -93,7 +93,7 @@ docker ps | rb drop 1
 </pre>
 <p>は素の ruby だと以下のようにかける</p>
 <pre class="src">
-docker ps | ruby -e &#39;print STDIN.map{|l| l}.drop(1).join&#39;
+docker ps | ruby -e 'print STDIN.map{|l| l}.drop(1).join'
 </pre>
 <p>もしかしたら、もうちょっと単純にかけるかもしれない。
   要するにあまり導入する動機がみあたらない‥</p>

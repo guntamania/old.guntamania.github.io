@@ -277,19 +277,19 @@ MyClass = (function() {
   var self;
   // 2
   function Klass() {
-	// 3
-	self = this;
+        // 3
+        self = this;
   };
   Klass.prototype = {
-	// 4
-	publicMethod1: function() {
-	},
-	publicMethod2: function() {
-	}
+        // 4
+        publicMethod1: function() {
+        },
+        publicMethod2: function() {
+        }
   };
   // 5
   function privateMethod() {
-	self.publicMethod2();
+        self.publicMethod2();
   };
   // 6
   return Klass;

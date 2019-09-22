@@ -100,12 +100,12 @@ Options:
 <span class="timestamp">[2019-05-09 Thu]</span>
 <p>emacs の org-mode を使っていたら、</p>
 <pre class="src">
-Symbol&#39;s value as variable is void
+Symbol's value as variable is void
 </pre>
 <p>と出るようになった。
   設定の読み込み順序がおかしいようだ。</p>
 <pre class="src" lang="lisp">
-(with-eval-after-load &#39;org
+(with-eval-after-load 'org
  ;; here goes your Org config
 )
 </pre>
