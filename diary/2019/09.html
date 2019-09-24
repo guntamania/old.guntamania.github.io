@@ -77,6 +77,61 @@ picture-in-picture" allowfullscreen></iframe>
 <p>いくらプロフェッショナルなプログラマであり、日本と違ってジョブスクリプションによって自分の業務範囲がある程度明確化されているとしても、全く打合せとかインタラプションなく一日が終わるなんてことはないんじゃないかな。
   彼らとて、もっと泥臭いやり取りをしていると思うんだけど。</p>
 <p>気になった点はそれくらいか。あと、カメラ入れても平気な会社って大丈夫か？</p>
+<h2 id="1">Android DataBinding</h2>
+<span class="timestamp">[2019-09-24 Tue]</span>
+<p>DataBinding をいじってたときに、
+  Spinnerとの双方向データバインディングってどうすんだ？って気になったので、メモ。</p>
+<p><a href="https://code.luasoftware.com/tutorials/android/android-two-way-data-binding-with-spinner/">Android Simple Two Way Data Binging With Spinner Without
+  BindingAdapter (Kotlin) | Lua Software Code</a></p>
+<pre class="src">
+&lt;Spinner
+    android:layout_width=&quot;match_parent&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:selectedItemPosition=&quot;@={viewModel.spinnerPosition}&quot;
+/&gt;
+</pre>
+<p>とする。@= で双方向バインディングだね。</p>
+<p>で、ViewModel側はLiveData使うと便利。
+  値を読み書きしたいだけならこれで十分。</p>
+<pre class="src">
+class SampleViewModel() : ViewModel() {
+  val itemPosition = MutableLiveData&lt;Int&gt;()
+}
+</pre>
+<p>最近(ここ1年くらい)DataBindingの勉強始めたので
+  歴史的なところに引っかかるとすぐわけがわからなくなるんだけど、
+  昔は BindingAdapter
+  とやらを使って双方向バインディングを実装してたんだね。
+  そっちの記事ばっかりヒットして困ってた。</p>
+<p>今は gradle いじって</p>
+<pre class="src">
+android{
+    :
+    dataBinding {
+        enabled = true
+    }
+    :
+}
+</pre>
+<p>ってすればすぐに使えるんだから、便利だよね。</p>
+<p>値の読書きだけだと上の記事で十分なんだけど、
+  スピナーは往々にしてリスナーをはりたいという時がある。
+  値の変更通知を受け取りたいときには</p>
+<pre class="src">
+class SampleViewModel(
+    private val app: Application
+) : AndroidViewModel(app){
+   :
+   val spinnerPosition = MutableLiveData&lt;Int&gt;()
+   :
+   fun initViewModel() {
+      spinnerPosition.observe(app as LifecycleOwner, Observer { pos -&gt; /* do some awesome works */ })
+   }
+   :
+}
+</pre>
+<p>ってやると良い。
+  <code>ViewModel</code> でなく、 <code>AndroidViewModel</code> を継承してやるのがポイント。</p>
     </article>
     
     
