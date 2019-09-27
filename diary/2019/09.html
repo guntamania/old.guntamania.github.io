@@ -132,6 +132,28 @@ class SampleViewModel(
 </pre>
 <p>ってやると良い。
   <code>ViewModel</code> でなく、 <code>AndroidViewModel</code> を継承してやるのがポイント。</p>
+<h2 id="2">Blue Print での双方向バインディングの状況</h2>
+<span class="timestamp">[2019-09-27 Fri]</span>
+<p>では、Blueprintのサンプルではどうなっているか。</p>
+<p><a href="https://github.com/android/architecture-samples/tree/todo-mvvm-live-kotlin">android/architecture-samples | Github</a></p>
+<p>過去には <code>AndroidViewModel</code> を使っていたみたいなんだけど、
+  今は削除されている。</p>
+<p>xmlをのぞくと `onClick` を設定してコールバックをXMLから呼んでいるようだ。</p>
+<pre class="src" lang="xml">
+<span style="color:#070;font-weight:bold">&lt;CheckBox</span>
+    <span style="color:#b48">android:id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">@+id/task_detail_complete</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#b48">android:layout_width</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">wrap_content</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#b48">android:layout_height</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">wrap_content</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#b48">android:layout_gravity</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">center_vertical</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#b48">android:layout_marginRight</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">@dimen/activity_horizontal_margin</span><span style="color:#710">&quot;</span></span>
+    <span style="color:#b48">android:onClick</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">@{(view) -</span></span><span style="color:#F00;background-color:#FAA">&gt;</span> listener.onCompleteChanged(view)}&quot;
+    android:checked=&quot;@{viewmodel.completed}&quot; /<span style="color:#F00;background-color:#FAA">&gt;</span>
+</pre>
+<p>双方向バインディングでよくあるパターンとしては
+  `viewmodel.completed` を `subscribe`
+  したりするもんだけど、Androidだと LifeCycle
+  に依存してしまうから、
+  こっちのほうが却ってシンプルにかけるのかもしれない。</p>
     </article>
     
     
