@@ -39,7 +39,7 @@
 	  <ul>
 	    <li class="menu" id="menu-articles"><a href="/works">WORKS</a></li>
 	    <li class="menu"><a href="/diary">DIARY</a></li>
-	    <li class="menu" id="menu-aboutme"><a href="/about">ABOUT</a></li>
+	    <li class="menu"><a href="/articles">ARTICLES</a></li>
 	    
 	  </ul>
 	</nav>
@@ -54,7 +54,7 @@
 <p>vue.jsでつまっていたところが最近解決できた。</p>
 <pre class="src" lang="js">
 data() {
-  <span style="color:#080;font-weight:bold">return</span> {
+  return {
     hash = {}
   }
 }
@@ -67,7 +67,7 @@ hash.foo = &quot;new string&quot;
   プロパティの追加はサポートしてないようだ。</p>
 <p>このとき、 <code>$set</code> を使えばvueに対し更新を通知できる。</p>
 <pre class="src" lang="js">
-<span style="color:#369;font-weight:bold">$set</span>(hash, foo, <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">new string</span><span style="color:#710">&quot;</span></span>)
+$set(hash, foo, &quot;new string&quot;)
 </pre>
 <p>やや見た目が野暮ったくなるが、実装としてはあまり規模が変わらないので、
   やはりVueは良いということで。</p>

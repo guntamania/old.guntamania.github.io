@@ -39,7 +39,7 @@
 	  <ul>
 	    <li class="menu" id="menu-articles"><a href="/works">WORKS</a></li>
 	    <li class="menu"><a href="/diary">DIARY</a></li>
-	    <li class="menu" id="menu-aboutme"><a href="/about">ABOUT</a></li>
+	    <li class="menu"><a href="/articles">ARTICLES</a></li>
 	    
 	  </ul>
 	</nav>
@@ -139,7 +139,7 @@ config.action_cable.disable_request_forgery_protection = true
 <p>あと、そういや、これも必要なのかもしれない。</p>
 <p><code>config/routes.rb</code></p>
 <pre class="src">
-mount ActionCable.server =&gt; '/cable'
+mount ActionCable.server =&gt; &#39;/cable&#39;
 </pre>
 <p>ただ、ローカル環境では、これつけなくても動いていたので、
   本当に必要かは未調査。</p>

@@ -39,7 +39,7 @@
 	  <ul>
 	    <li class="menu" id="menu-articles"><a href="/works">WORKS</a></li>
 	    <li class="menu"><a href="/diary">DIARY</a></li>
-	    <li class="menu" id="menu-aboutme"><a href="/about">ABOUT</a></li>
+	    <li class="menu"><a href="/articles">ARTICLES</a></li>
 	    
 	  </ul>
 	</nav>
@@ -140,14 +140,14 @@ class SampleViewModel(
   今は削除されている。</p>
 <p>xmlをのぞくと `onClick` を設定してコールバックをXMLから呼んでいるようだ。</p>
 <pre class="src" lang="xml">
-<span style="color:#070;font-weight:bold">&lt;CheckBox</span>
-    <span style="color:#b48">android:id</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">@+id/task_detail_complete</span><span style="color:#710">&quot;</span></span>
-    <span style="color:#b48">android:layout_width</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">wrap_content</span><span style="color:#710">&quot;</span></span>
-    <span style="color:#b48">android:layout_height</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">wrap_content</span><span style="color:#710">&quot;</span></span>
-    <span style="color:#b48">android:layout_gravity</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">center_vertical</span><span style="color:#710">&quot;</span></span>
-    <span style="color:#b48">android:layout_marginRight</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">@dimen/activity_horizontal_margin</span><span style="color:#710">&quot;</span></span>
-    <span style="color:#b48">android:onClick</span>=<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">@{(view) -</span></span><span style="color:#F00;background-color:#FAA">&gt;</span> listener.onCompleteChanged(view)}&quot;
-    android:checked=&quot;@{viewmodel.completed}&quot; /<span style="color:#F00;background-color:#FAA">&gt;</span>
+&lt;CheckBox
+    android:id=&quot;@+id/task_detail_complete&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:layout_gravity=&quot;center_vertical&quot;
+    android:layout_marginRight=&quot;@dimen/activity_horizontal_margin&quot;
+    android:onClick=&quot;@{(view) -&gt; listener.onCompleteChanged(view)}&quot;
+    android:checked=&quot;@{viewmodel.completed}&quot; /&gt;
 </pre>
 <p>双方向バインディングでよくあるパターンとしては
   <code>viewmodel.completed</code> を <code>subscribe</code>

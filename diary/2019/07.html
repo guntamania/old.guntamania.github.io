@@ -39,7 +39,7 @@
 	  <ul>
 	    <li class="menu" id="menu-articles"><a href="/works">WORKS</a></li>
 	    <li class="menu"><a href="/diary">DIARY</a></li>
-	    <li class="menu" id="menu-aboutme"><a href="/about">ABOUT</a></li>
+	    <li class="menu"><a href="/articles">ARTICLES</a></li>
 	    
 	  </ul>
 	</nav>
@@ -58,11 +58,11 @@
   結構堂々巡りしてしまう。</p>
 <p>たとえば、IF文を教えるとする。Javascriptでやってみるとして</p>
 <pre class="src" lang="js">
-<span style="color:#080;font-weight:bold">var</span> i = <span style="color:#00D">0</span>;
-<span style="color:#080;font-weight:bold">if</span> (i === <span style="color:#00D">0</span>) {
-  alert(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">これは0</span><span style="color:#710">&quot;</span></span>);
-} <span style="color:#080;font-weight:bold">else</span> {
-  alert(<span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">これは1</span><span style="color:#710">&quot;</span></span>);
+var i = 0;
+if (i === 0) {
+  alert(&quot;これは0&quot;);
+} else {
+  alert(&quot;これは1&quot;);
 }
 </pre>
 <p>となると思うんだけど、まず <code>var</code> とは何なのか。
@@ -82,12 +82,12 @@
 <p>IF文の話を書いたけど、最近のモダンなプログラミング言語って明らかにIF文を駆逐しにきている気がする。
   昔のプログラムってもっとIF文だらけだった気がするんだけど。</p>
 <pre class="src" lang="java">
-<span style="color:#080;font-weight:bold">if</span> (<span style="color:#069">null</span> != nameStr &amp;&amp; nameStr != <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#710">&quot;</span></span>) {
-  <span style="color:#080;font-weight:bold">if</span> (isWithDoctor()) {
+if (null != nameStr &amp;&amp; nameStr != &quot;&quot;) {
+  if (isWithDoctor()) {
     nameStr += DOCTOR_TITLE;
-  } <span style="color:#080;font-weight:bold">else</span> <span style="color:#080;font-weight:bold">if</span> (isWithMr()) {
+  } else if (isWithMr()) {
     nameStr += MR_TITLE;
-  } <span style="color:#080;font-weight:bold">else</span> <span style="color:#080;font-weight:bold">if</span> (isWithMs()) {
+  } else if (isWithMs()) {
     nameStr += MS_TITLE;
   }
 } 
@@ -113,15 +113,15 @@ nameStr = nameStr?.takeIf{ it != &quot;&quot; }?.let{
   ガリガリ書いていくべきだと思うのだ。</p>
 <p>IF文より前に、繰返し文はFOR文やWHILE文を書かなくなった。</p>
 <pre class="src" lang="java">
-<span style="color:#080;font-weight:bold">for</span> (<span style="color:#339;font-weight:bold">int</span> i = <span style="color:#00D">0</span>; i &lt;= arr.length; i++) {
-  someProcess(arr[i]);  <span style="color:#777">// エラー発生！</span>
+for (int i = 0; i &lt;= arr.length; i++) {
+  someProcess(arr[i]);  // エラー発生！
 }
 </pre>
 <p>こっちのほうがむしろ初心者殺しかもしれない。
   繰返し文を書くのに値の範囲を意識しないといけないなんて！
   なので、こちらは <code>EACH</code> 文を先に学ぶべきかもしれない。</p>
 <pre class="src" lang="java">
-<span style="color:#080;font-weight:bold">for</span> (<span style="color:#339;font-weight:bold">int</span> value : arr) {
+for (int value : arr) {
   someProcess(value);
 }
 </pre>

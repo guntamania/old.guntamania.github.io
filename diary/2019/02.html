@@ -39,7 +39,7 @@
 	  <ul>
 	    <li class="menu" id="menu-articles"><a href="/works">WORKS</a></li>
 	    <li class="menu"><a href="/diary">DIARY</a></li>
-	    <li class="menu" id="menu-aboutme"><a href="/about">ABOUT</a></li>
+	    <li class="menu"><a href="/articles">ARTICLES</a></li>
 	    
 	  </ul>
 	</nav>
@@ -111,15 +111,15 @@ val myName = hoge?.fuga?.name ?: &quot;no_name&quot;
 </pre>
 <p>みたいな。rubyだと</p>
 <pre class="src" lang="ruby">
-my_name = hoge&amp;.fuga&amp;.name || <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">no_name</span><span style="color:#710">&quot;</span></span>
+my_name = hoge&amp;.fuga&amp;.name || &quot;no_name&quot;
 </pre>
 <p>となるのかな。
   どちらの例も <code>hoge</code> や <code>fuga</code> が <code>null</code> の場合、
   きちんと右辺から <code>no_name</code> が返るようになっている。</p>
 <p>これ、まともにJavaでやろうとすると</p>
 <pre class="src" lang="java">
-<span style="color:#0a8;font-weight:bold">String</span> myName = <span style="background-color:hsla(0,100%,50%,0.05)"><span style="color:#710">&quot;</span><span style="color:#D20">no_name</span><span style="color:#710">&quot;</span></span>;
-<span style="color:#080;font-weight:bold">if</span> (<span style="color:#069">null</span> != hoge &amp;&amp; <span style="color:#069">null</span> != hoge.fuga &amp;&amp; <span style="color:#069">null</span> != hoge.fuga.name) {
+String myName = &quot;no_name&quot;;
+if (null != hoge &amp;&amp; null != hoge.fuga &amp;&amp; null != hoge.fuga.name) {
   myName = hoge.fuga.name;
 }
 </pre>
