@@ -1,0 +1,99 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+  <?xml version="1.0" encoding="utf-8"?>
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+  <head>
+    <title>guntamania</title>
+    <link rel="icon" type="image/png" href="/static/favicon-32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/static/favicon-64.png" sizes="64x64">
+    <link rel="icon" type="image/png" href="/static/favicon-128.png" sizes="128x128">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="generator" content="ruby template engine" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="/css/sitemap.css"
+          type="text/css"/>
+    <script type="text/javascript"
+	    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" 
+            src="/js/index.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107284492-2"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-107284492-2');
+    </script> 
+    
+  </head>
+  
+  <body>
+    <HEADER>
+      <H1 class="title"> <a class="title" href="/"> guntamania </a>
+	<nav>
+	  <ul>
+	    <li class="menu" id="menu-articles"><a href="/works">WORKS</a></li>
+	    <li class="menu"><a href="/diary">DIARY</a></li>
+	    <li class="menu"><a href="/articles">ARTICLES</a></li>
+	    
+	  </ul>
+	</nav>
+      </H1>
+    </HEADER>
+    <article id="main-article">
+      <div id="url" style="display:none;">https://medaka.github.io//diary/2020/08.html</div>
+      <h2 id="0">CoroutinesとLiveDataとKoin</h2>
+<span class="timestamp">[2020-08-16 Sun]</span>
+<p>1年程度放置してしまった。
+  長らく副業案件していたが、久々にAndroidをキャッチアップしていのでメモ。</p>
+<p>職場ではRxJavaばかりいじっているが、KotlinにはCoroutinesという対抗馬がいる。
+  色々なリポジトリ見ている限りまだRxJavaのほうが優勢なんだけど、そろそろCoroutinesも使い心地を確かめなければ。</p>
+<p><a href="https://satoshun.github.io/2019/12/android-viewodel-kotlin-coroutine/">ViewModelとKotlin Coroutinesの書き方あれこれ | stsnのブログ</a></p>
+<p>ここのサイトが非常にうまくまとまっていた。
+  livedata builder というのがあるのか。。
+  これだと相当簡単にかけそうだが、汎用性にかけそうでもある。</p>
+<p>あとはKotlinのKoinを使えばViewModelを簡単に注入できるのが感動した。</p>
+<pre class="src">
+private val appModule = module {
+    // ViewModel instance of MyViewModel
+    // get() will resolve Repository instance
+    viewModel { MainViewModel(get()) }
+    factory { MainRepository(get())}
+    factory { ApiClient() }
+}
+</pre>
+<p>としておくと、</p>
+<pre class="src">
+class MainFragment : Fragment() {
+    private val mainViewModel : MainViewModel by viewModel()
+    ...
+</pre>
+<p>これだけで注入できてしまう..
+  今までだと <code>Activity</code> から <code>obtainViewModel</code> を実装して <code>ViewModel</code>
+  をもらってくる必要があったが..
+  これは便利だ。</p>
+<p>ただし、 <code>LifeCycleOwner</code> の注入は忘れないようにしよう</p>
+<pre class="src">
+override fun onActivityCreated(savedInstanceState: Bundle?) {
+    super.onActivityCreated(savedInstanceState)
+    viewDataBinding.lifecycleOwner = this.viewLifecycleOwner
+}
+</pre>
+<p>viewDataBindingを使っているのにこれを忘れていた..
+  儀式的なものはあまり意味を考えないからついつい楽をすると忘れてしまうんだよね..</p>
+    </article>
+    
+    
+    <footer>
+      <nav class="footer">
+	<p class="copyright">Copyright 2018</p>
+      </nav>
+    </footer>
+  </body>
+</html>
+
