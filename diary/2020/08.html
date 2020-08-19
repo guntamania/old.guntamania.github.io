@@ -86,6 +86,37 @@ override fun onActivityCreated(savedInstanceState: Bundle?) {
 </pre>
 <p>viewDataBindingを使っているのにこれを忘れていた..
   儀式的なものはあまり意味を考えないからついつい楽をすると忘れてしまうんだよね..</p>
+<h2 id="1">LiveData を更新したい</h2>
+<span class="timestamp">[2020-08-19 Wed]</span>
+<p>LiveData Coroutine Builder 使ってUIを表示したい</p>
+<p>単純に ViewModelなんかに書くと</p>
+<pre class="src">
+val user = liveData&lt;User&gt; { runCatching { repository.getUser() } }
+</pre>
+<p>っていうコードになるんだけど、値を更新したいときに</p>
+<pre class="src">
+viewmodel.user.observe(viewLifecycleOwner, .. )
+</pre>
+<p>とかって書いてみるんだけど動いてくれない..</p>
+<p>で、以下の記事を参考にする。</p>
+<p><a href="https://medium.com/@star_zero/livedata-coroutines-f658cc055f04">LiveData 🤝 Coroutines</a></p>
+<p>引用させていただく</p>
+<pre class="src">
+private val _refresh = MutableLiveData&lt;Unit&gt;()
+val data = _refresh.switchMap {
+    liveData {
+        emit(repository.getData())
+    }
+}
+fun refresh() {
+    _refresh.value = null
+}
+</pre>
+<p>なるほど、購読対象を一個増やしてやるんだな..</p>
+<p>だけどもどうもこの方法はアドホックな感じがある。
+  普通に <code>liveData{ .. }</code> がMutableLiveDataを返してくれればいいんだけど..</p>
+<p>ところで、この <code>liveData{ .. }</code> という拡張が非常にググりずらいし、Githubも検索しづらい。
+  単にボタンUIで値を更新したいとかなのに、それでこんなアドホックな方法使わないといけないとしたら、ちょっときついかもしれない。</p>
     </article>
     
     
