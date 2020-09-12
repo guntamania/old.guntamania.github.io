@@ -1,0 +1,82 @@
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+
+  <?xml version="1.0" encoding="utf-8"?>
+  <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+  <head>
+    <title>guntamania</title>
+    <link rel="icon" type="image/png" href="/static/favicon-32.png" sizes="32x32">
+    <link rel="icon" type="image/png" href="/static/favicon-64.png" sizes="64x64">
+    <link rel="icon" type="image/png" href="/static/favicon-128.png" sizes="128x128">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+    <meta name="generator" content="ruby template engine" />
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
+    <link rel="stylesheet"
+          href="/css/sitemap.css"
+          type="text/css"/>
+    <script type="text/javascript"
+	    src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script type="text/javascript" 
+            src="/js/index.js"></script>
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=UA-107284492-2"></script>
+    <script>
+     window.dataLayer = window.dataLayer || [];
+     function gtag(){dataLayer.push(arguments);}
+     gtag('js', new Date());
+
+     gtag('config', 'UA-107284492-2');
+    </script> 
+    
+  </head>
+  
+  <body>
+    <HEADER>
+      <H1 class="title"> <a class="title" href="/"> guntamania </a>
+	<nav>
+	  <ul>
+	    <li class="menu" id="menu-articles"><a href="/works">WORKS</a></li>
+	    <li class="menu"><a href="/diary">DIARY</a></li>
+	    <li class="menu"><a href="/articles">ARTICLES</a></li>
+	    
+	  </ul>
+	</nav>
+      </H1>
+    </HEADER>
+    <article id="main-article">
+      <div id="url" style="display:none;">https://medaka.github.io//diary/2020/09.html</div>
+      <h2 id="0">なんとかキャッチアップ</h2>
+<span class="timestamp">[2020-09-12 Sat]</span>
+<p>なんとかキャッチアップしたのを公開。</p>
+<p><a href="https://github.com/guntamania/MvvmCoroutines">MvvmCoroutines</a></p>
+<p>koin, LiveData, Coroutines を触ってみた結果。
+  内容自体はBitcoinレポジトリのIssueを見るViewer。
+  特に面白い内容ではないけど、特にCoroutinesは触れてよかった。</p>
+<p>とはいえ、色々イマイチな部分が残っている..</p>
+<p>今回は3パターンの方法で実装している。</p>
+<p>1つ目は Coroutine を <code>Flow</code> でラップし、 <code>collect</code> で非同期処理をコールしているもの（ <code>MainViewModel</code> 参照 ）。
+  なんとなくラップする感覚が RxJava に似ている部分がなくもなく、直感的に実装しやすかった。</p>
+<p>2つ目は <code>Scope#launch</code> を使って呼び出しているもの（ <code>Sub01ViewModel</code> 参照）。
+  <code>Deffered</code> を <code>launch</code> 内でコールするという、多分 Coroutines の中では一番ポピュラーな方法だと思う。</p>
+<p>3つ目は LiveData Coroutine Builder を用いて <code>liveData{ }</code> で直接LiveDataのインスタンスを生成する方法（ <code>Sub02ViewModel</code> 参照）。
+  LiveDataを直接作れるってことは、すぐにViewにBindできることを期待したんだけど、なぜか明示的に <code>Observe</code> しないと動いてくれない..
+  要するに意図せずColdな状態になっているんだと思うんだけど、Githubを探してみたけど、いい参考コードも見つからなかった。
+  ここはあまりにイマイチなのでそのうち調査して修正したい。</p>
+<p>で、画面下部にスクロールしたら自動的に読み込む、いわゆる「無限スクロール」
+  を実装したかったんだが、ここも実装がイマイチになってしまった。
+  色々調べていると、最近は PagedList を使うらしい..</p>
+<p><a href="https://developer.android.com/topic/libraries/architecture/paging?hl=ja">ページング ライブラリの概要 | Android developers</a></p>
+<p>先にこっちを見とけば。。。</p>
+    </article>
+    
+    
+    <footer>
+      <nav class="footer">
+	<p class="copyright">Copyright 2018</p>
+      </nav>
+    </footer>
+  </body>
+</html>
+
