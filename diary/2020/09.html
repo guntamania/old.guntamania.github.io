@@ -69,6 +69,29 @@
   色々調べていると、最近は PagedList を使うらしい..</p>
 <p><a href="https://developer.android.com/topic/libraries/architecture/paging?hl=ja">ページング ライブラリの概要 | Android developers</a></p>
 <p>先にこっちを見とけば。。。</p>
+<h2 id="1">LiveDataはHotなのかColdなのか。</h2>
+<p><a href="https://at-sushi.work/blog/10">LiveDataのHot, Coldって意識できている？ | Mori Atsushi</a></p>
+<p>なるほどなあ。
+  どちらの挙動も示すのか。。どおりで..</p>
+<p>前書いたViewModel内でも</p>
+<pre class="src">
+private var issues = Transformations.switchMap(fresh) { page -&gt;
+    liveData&lt;List&lt;Issue&gt;&gt; {
+        runCatching {
+            repository.getIssues1(page)
+        }.onSuccess {
+            emit(it)
+            callback?.invoke()
+        }.onFailure { }
+    }
+}
+</pre>
+<p>としているのに、別の箇所で</p>
+<pre class="src">
+issues.observeForever { }
+</pre>
+<p>とやってしまっていた。これは明らかにライフサイクルを無視しているので、よくない..</p>
+<p>そしてまたもやソースをいじくったが、うまく行く方法が思いつかず..</p>
     </article>
     
     
